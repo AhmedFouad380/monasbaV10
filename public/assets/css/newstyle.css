@@ -1,0 +1,130 @@
+.form-check.form-check-custom .form-check-input {
+    margin: 0 10px;
+}
+
+.form-switch.form-check-solid .form-check-input {
+    height: 1.8rem;
+}
+
+
+label {
+    text-transform: capitalize;
+}
+
+.btn1 {
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.modal-header {
+    padding: 1rem 1rem !important;
+}
+
+.my-7 {
+    margin-top: 1rem !important;
+    margin-bottom: 1.75rem !important;
+}
+
+
+
+/* table tbody tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+
+table tbody tr:nth-child(even) {
+    background: #FCF6F6;
+} */
+
+
+/* tbody td {
+    font-size: 16px;
+    letter-spacing: -0.18px;
+    color: #3D3D3D;
+    border: solid 3px #FFFFFF !important;
+} */
+.btn.btn-bg-dark {
+    background-color: #e4e6ef !important;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.customBtn {
+    margin: 7px 0px !important;
+}
+
+.customBtn i {
+    color: #181c32 !important;
+}
+
+.customBtn i:hover {
+    color: #ee9919 !important;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+    justify-content: flex-start !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    width: 350px !important;
+}
+
+table th:first-child {
+    border-radius: 10px 0 0 0px !important;
+}
+
+html:lang(ar) table th:first-child {
+    border-radius: 0px 10px 0px 0px !important;
+}
+
+table th:last-child {
+    border-radius: 0 10px 0px 0 !important;
+}
+
+html:lang(ar) table th:last-child {
+    border-radius: 10px 0px 0px 0px !important;
+}
+
+.form-check.form-check-custom {
+    justify-content: center !important;
+}
+
+.table.gy-5 td {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.table.gy-5 th {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.table>:not(caption)>> {
+    padding: inherit !important;
+}
+
+@media (min-width: 1200px) {
+    .mx-xl-15 {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+table .form-check.form-check-custom {
+    justify-content: center !important;
+}
+
+.form-check.form-check-custom {
+    justify-content: space-between!important;
+}
+.bold{
+    font-weight: bold !important;
+}
+.fs-18{
+    font-size: 18px !important;
+}
