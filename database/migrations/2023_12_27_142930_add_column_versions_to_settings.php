@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('settings', function (Blueprint $table) {
-            //
+            $table->string('ios_version')->nullable();
+            $table->string('android_version')->nullable();
         });
     }
 
