@@ -30,7 +30,9 @@ class SettingRequest extends FormRequest
             'terms_en'=>'required',
             'about_ar'=>'required',
             'about_en'=>'required',
-            'logo'=>'nullable'
+            'logo'=>'nullable',
+            'ios_version'=>'required',
+            'android_version'=>'required',
         ];
     }
 }

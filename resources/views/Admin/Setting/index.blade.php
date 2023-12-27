@@ -63,6 +63,16 @@
                                         <input class="form-control form-control-solid" type="number" value="{{$Setting->ads_count_per_month}}" name="ads_count_per_month">
                                     </div>
                                     <input type="hidden" name="id" value="{{$Setting->id}}" />
+
+                                    <div class="form-group">
+                                        <label>Android Version :</label>
+                                        <input class="form-control form-control-solid" type="text" value="{{$Setting->android_version}}" name="android_version">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>ios_version :</label>
+                                        <input class="form-control form-control-solid" type="text" value="{{$Setting->ios_version}}" name="ios_version">
+                                    </div>
                                 </div>
                             </div>
 
