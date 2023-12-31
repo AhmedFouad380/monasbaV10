@@ -35,7 +35,7 @@ class Product extends Model
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
-            return Storage::disk('s3')->url('uploads/products/' . $image);
+            return Storage::disk('s3')->url('uploads/products2/' . $image);
 //            return asset('uploads/admin') . '/' . $image;
         }
         return asset('defaults/user_default.png');
@@ -47,7 +47,7 @@ class Product extends Model
             $img_name = '1000' . time() . random_int(0000, 9999) . '.' . $image->getClientOriginalExtension();
 //            $path = $img_name->storePublicly('images', 's3');
 //            $image->storePublicly('images/', $img_name, 's3');
-            $image->storeAs('uploads/products', $img_name, 's3');
+            $image->storeAs('uploads/products2', $img_name, 's3');
 
 //            $image->move(public_path('/uploads/admin/'), $img_name);
             $this->attributes['image'] = $img_name;
