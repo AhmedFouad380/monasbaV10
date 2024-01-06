@@ -35,7 +35,7 @@ class Category extends Model
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
-            return Storage::disk('s3')->url( $image);
+            return Storage::disk('s3')->url('uploads/categories/'.$image);
 //            return asset('uploads/admin') . '/' . $image;
         }
         return asset('defaults/user_default.png');

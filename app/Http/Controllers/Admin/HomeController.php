@@ -27,4 +27,9 @@ class HomeController extends Controller
     public function translate($word){
         return trans('lang.'.$word);
     }
+
+    public function viewExsel(){
+
+//        return ;
+    }
 }
