@@ -124,7 +124,6 @@ Route::prefix('client')->group(function () {
         Route::post('/report', [\App\Http\Controllers\Api\ReportController::class, 'chatReport'])->name('chatReport');
 
         Route::get('/setting', [HomeController::class, 'setting'])->name('setting');
-        Route::get('/changeProductsStatus', [HomeController::class, 'changeProductsStatus'])->name('setting');
 
         Route::prefix('chat')->group(function () {
             Route::get('/', [ChatController::class, 'index']);
@@ -142,3 +141,5 @@ Route::prefix('client')->group(function () {
 
     });
 });
+
+Route::get('/changeProductsStatus', [HomeController::class, 'changeProductsStatus'])->name('setting');
