@@ -32,7 +32,7 @@ Route::prefix('client')->group(function () {
 
     Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
     Route::get('/sub-categories', [HomeController::class, 'subCategories'])->name('subCategories');
-    Route::get('/countries', [HomeController::class, 'Countries'])->name('categories');
+    Route::get('/countries', [HomeController::class, 'Countries'])->name('countries');
     Route::get('/cities', [HomeController::class, 'Cities'])->name('cities');
     Route::get('/states', [HomeController::class, 'States'])->name('states');
     Route::get('/currencies', [HomeController::class, 'Currencies'])->name('Currencies');
