@@ -30,3 +30,6 @@ Route::get('lang/{lang}', function ($lang) {
     return back();
 });
 
+Route::get('test-env',function (){
+    return env('PUSHER_APP_KEY');
+});
