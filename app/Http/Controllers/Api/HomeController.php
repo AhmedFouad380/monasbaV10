@@ -191,7 +191,7 @@ class HomeController extends Controller
         if(isset($request->user_id)){
             $result->where('user_id',$request->user_id);
         }
-        $data = ProductsResource::collection($result->paginate(10))->response()->getData(true);;
+        $data = ProductsResource::collection($result->paginate(20))->response()->getData(true);;
         return msgdata(true, trans('lang.data_display_success'), $data, success());
     }
 
