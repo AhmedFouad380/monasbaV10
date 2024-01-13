@@ -404,9 +404,9 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit = 'K')
 function upload($file, $dir)
 {
     $image = time() . uniqid() . '.' . $file->getClientOriginalExtension();
-    $path = $image->storePublicly("images","s3") ;
+//    $path = $image->storePublicly("images","s3") ;
 
-//    $file->storeAs('uploads' . '/' . $dir,$image,'s3');
+    $file->storeAs('uploads' . '/' . $dir,$image,'s3');
 //    $file->move(public_path('uploads' . '/' . $dir), $image);
     return $image;
 }
