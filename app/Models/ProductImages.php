@@ -28,7 +28,7 @@ class ProductImages extends Model
 //            $path = $img_name->storePublicly('avatars', 's3');
 
 //            $image->storePublicly('images', $img_name, 's3');
-            $image->storeAs('uploads/products', $img_name, 's3');
+            $image->storeAs('uploads/products2', $img_name, 's3');
             $this->attributes['image'] = $img_name;
         }
     }
