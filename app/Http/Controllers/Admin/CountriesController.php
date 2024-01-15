@@ -118,12 +118,12 @@ class CountriesController extends Controller
     public function update(CountriesRequest $request)
     {
         $data = $request->validated();
-//        if (is_file($request->image)) {
-//            $video = upload($request->image, 'Country');
-//            $data['image'] = $video;
-//        } else {
-//            $data['image'] = $request->image;
-//        }
+        if (is_file($request->image)) {
+            $video = upload($request->image, 'Country');
+            $data['image'] = $video;
+        } else {
+            $data['image'] = $request->image;
+        }
         $result = $this->objectName::whereId($request->id)->first();
         $result->update($data);
 
