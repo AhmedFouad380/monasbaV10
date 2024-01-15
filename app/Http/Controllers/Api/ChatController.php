@@ -215,7 +215,7 @@ class ChatController extends Controller
         }else{
             $user = User::find($chat->user_id);
         }
-        $tokens[]=$user->fcm_token;
+
         $title = 'مناسبة';
         $type = 'chat';
         $message= 'تم ارسال رساله جديدة من قبل '. Auth::guard('user')->user()->name;
@@ -228,7 +228,10 @@ class ChatController extends Controller
             'type'=>$type
 
         ]);
-        send($tokens ,$title ,$message,Auth::guard('user')->user()->id ,$type);
+        if(isset($user->fcm_token)){
+            $tokens[]=$user->fcm_token;
+            send($tokens ,$title ,$message,Auth::guard('user')->user()->id ,$type);
+        }
         return callback_data(success(), 'save_success', $data);
 
     }
