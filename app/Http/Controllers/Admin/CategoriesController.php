@@ -117,11 +117,11 @@ class CategoriesController extends Controller
     public function update(CategoryRequest $request)
     {
         $data = $request->validated();
-        if (isset($request->image)) {
-            $video = upload($request->image, 'categories');
-            dd($video);
-            $data['image'] = $video;
-        }
+//        if (isset($request->image)) {
+//            $video = upload($request->image, 'categories');
+//            dd($video);
+//            $data['image'] = $video;
+//        }
         $result = $this->objectName::whereId($request->id)->first();
         $result->update($data);
 
