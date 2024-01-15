@@ -114,12 +114,12 @@ class SubCategoriesController extends Controller
     public function update(SubCategoryRequest $request)
     {
         $data = $request->validated();
-        if (is_file($request->image)) {
-            $video = upload($request->image, 'categories');
-            $data['image'] = $video;
-        } else {
-            $data['image'] = $request->image;
-        }
+//        if (is_file($request->image)) {
+//            $video = upload($request->image, 'categories');
+//            $data['image'] = $video;
+//        } else {
+//            $data['image'] = $request->image;
+//        }
         $result = $this->objectName::whereId($request->id)->first();
         $result->update($data);
 
