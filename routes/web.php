@@ -21561,7 +21561,7 @@ route::get('updateSubCat',function (){
         ["id" => 25616, "sub_category_id" => 10],
     ];
     foreach($arrayVar as $pro){
-        App\Models\Product::where('id',$pro->id)->update(['sub_category_id'=>$pro->sub_category_id]);
+        App\Models\Product::where('id',$pro['id'])->update(['sub_category_id'=>$pro['sub_category_id']]);
     }
     echo 'sccuess';
 });
