@@ -261,15 +261,16 @@ class AuthController extends Controller
         if (!$updatePassword) {
             return msgdata(true, trans('lang.token_invalid'), (object)[], failed());
         }
-        $client = User::where('country_code', $request->country_code)->where('phone', $request->phone)->first();
-        $token = auth('user')->login($client);
-        if (!$token) {
-            return msg(false, trans('lang.unauthorized'), failed());
-        }
-        $result['token'] = $token;
-        $result['client_data'] = Auth::guard('user')->user();
-        DB::table('user_password_rest')->where(['phone' => $request->phone])->delete();
-        return msgdata(true, trans('lang.possword_rest'), $result, success());
+        $client = User::where('phone', $request->phone)->first();
+            $token = auth('user')->login($client);
+            if (!$token) {
+                return msg(false, trans('lang.unauthorized'), failed());
+            }
+            $result['token'] = $token;
+            $result['client_data'] = Auth::guard('user')->user();
+            DB::table('user_password_rest')->where(['phone' => $request->phone])->delete();
+            return msgdata(true, trans('lang.possword_rest'), $result, success());
+
     }
 
     public function changePassword(Request $request)
