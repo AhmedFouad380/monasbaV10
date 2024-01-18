@@ -248,6 +248,43 @@ class HomeController extends Controller
         return msgdata(true, trans('lang.added_s'), $data, success());
 
     }
+    public function storeProductOldapp(ProductRequest $request){
+        $data = $request->validated();
+
+        $images = $data['images'];
+        unset($data['images']);
+        $data['user_id']=Auth::guard('user')->user()->id;
+        $result = Product::create($data);
+        if(isset($images)){
+            foreach($images as $key => $image){
+                ProductImages::create([
+                    'product_id'=>$result->id,
+                    'image'=>$image,
+                ]);
+            }
+        }
+
+        // Notifcation For follwers
+        $tokens = [];
+        if(isset(Auth::guard('user')->user()->Notifyfollowers)){
+            foreach (Auth::guard('user')->user()->Notifyfollowers as $followers){
+                $notifcation = Notification::create([
+                    'name_ar'=>'تم اضافة منتج جديد من قبل '. Auth::guard('user')->user()->name,
+                    'name_en'=>'A new product has already been added by '. Auth::guard('user')->user()->name,
+                    'product_id'=>$result->id,
+                    'user_id'=>$followers->id,
+                ]);
+                $tokens[]=$followers->fcm_token;
+            }
+            if(isset($notifcation)){
+                send($tokens,'Monsaba',$notifcation['title'],$result->id );
+            }
+        }
+        // end notifcation
+        $data = ProductResource::make($result);
+        return msgdata(true, trans('lang.added_s'), $data, success());
+
+    }
 
     public function updateProduct(ProductRequest $request){
         $data = $request->validated();

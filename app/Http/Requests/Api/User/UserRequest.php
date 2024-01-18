@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             'name' => 'required|string|min:2|max:255',
             'country_code' => 'required|string',
             'phone' => 'required|string|unique:users,phone',
-            'username' => 'required|string|unique:users,username',
+            'username' => 'nullable|string|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'min:6|confirmed',
             'fcm_token' => 'nullable',

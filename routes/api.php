@@ -11,6 +11,7 @@ use \App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\QuestionCommentController;
 use \App\Http\Controllers\Api\ChatController;
+use \App\Http\Controllers\Api\RestoreOldAppData;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -143,3 +144,6 @@ Route::prefix('client')->group(function () {
 });
 
 Route::get('/changeProductsStatus', [HomeController::class, 'changeProductsStatus'])->name('setting');
+
+Route::post('store-product-oldapp',[RestoreOldAppData::class,'storeProductOldapp'])->name('storeProductOldApp');
+Route::post('store-user-oldapp',[RestoreOldAppData::class,'register'])->name('storeUserOldApp');
