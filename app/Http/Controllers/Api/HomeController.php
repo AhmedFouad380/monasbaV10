@@ -287,7 +287,9 @@ class HomeController extends Controller
     }
 
     public function updateProduct(ProductRequest $request){
+
         $data = $request->validated();
+
 
         if(isset($data['images'])){
             $images = $data['images'];

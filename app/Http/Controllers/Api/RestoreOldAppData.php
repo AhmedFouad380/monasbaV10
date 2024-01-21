@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ProductRequest;
 use App\Http\Requests\Api\User\UserRequest;
 use App\Http\Resources\Api\ProductResource;
+use App\Models\Country;
 use App\Models\Notification;
 use App\Models\Product;
 use App\Models\ProductImages;
@@ -37,10 +38,14 @@ class RestoreOldAppData extends Controller
 
     public function storeProductOldapp(ProductRequest $request){
         $data = $request->validated();
-
+        if(isset($data['currency_id'])){
+            unset($data['currency_id']);
+            $data['currency_id'] = Country::find($data['country_id'])->Currency->id;
+        }
         $images = $data['images'];
         unset($data['images']);
-        $data['user_id']=Auth::guard('user')->user()->id;
+        unset($data['images']);
+        $data['user_id']=$request->user_id;
         $result = Product::create($data);
         if(isset($images)){
             foreach($images as $key => $image){

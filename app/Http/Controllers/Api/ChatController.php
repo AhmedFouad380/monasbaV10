@@ -176,6 +176,7 @@ class ChatController extends Controller
             'message' => 'required_if:type,text',
             'voice' => 'required_if:type,voice',
             'file' => 'required_if:type,file',
+            'images' => 'required_if:type,image',
             'lat' => 'required_if:type,location',
             'lng' => 'required_if:type,location',
             'type' => 'required:in:text,voice,location,file,contact,image',
@@ -183,17 +184,33 @@ class ChatController extends Controller
         if (!is_array($validator) && $validator->fails()) {
             return callback_data(error(), $validator->errors()->first());
         }
-
-        $data = Message::create([
-            'chat_id' => $request->chat_id,
-            'sender_id' => Auth::guard('user')->id(),
-            'message' => $request->message,
-            'voice' => $request->voice,
-            'file' => $request->file,
-            'lat' => $request->lat,
-            'lng' => $request->lng,
-            'type' => $request->type,
-        ]);
+        if($request->type == 'image'){
+            if(is_array($request->images)){
+                foreach($request->images as $img){
+                    $data = Message::create([
+                        'chat_id' => $request->chat_id,
+                        'sender_id' => Auth::guard('user')->id(),
+                        'message' => $request->message,
+                        'voice' => $request->voice,
+                        'file' => $img,
+                        'lat' => $request->lat,
+                        'lng' => $request->lng,
+                        'type' => $request->type,
+                    ]);
+                }
+            }
+        }else{
+            $data = Message::create([
+                'chat_id' => $request->chat_id,
+                'sender_id' => Auth::guard('user')->id(),
+                'message' => $request->message,
+                'voice' => $request->voice,
+                'file' => $request->file,
+                'lat' => $request->lat,
+                'lng' => $request->lng,
+                'type' => $request->type,
+            ]);
+        }
         $data->created_at = \Carbon\Carbon::parse($data->created_at)->format('Y-m-d H:i');
         $options = array(
             'cluster' => env('PUSHER_APP_CLUSTER'),
