@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Models\Admin;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -159,6 +160,7 @@ class UsersController extends Controller
     {
         try {
             $results = $this->objectName::whereIn('id', $request->id)->get();
+            Product::where('user_id',$request->id)->delete();
             foreach ($results as $key => $result) {
                 delLog($result, 1, $this->route, $result->first_name);
             }
