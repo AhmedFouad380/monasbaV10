@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function login(UserLoginRequest $request)
     {
         $data = $request->validated();
-        $credentials = $request->only('country_code', 'phone', 'password');
+        $credentials = $request->only( 'phone', 'password');
 //        $phone = $request->country_code.$request->phone;
         $phone = $request->phone;
         $token = Auth::guard('user')->attempt($credentials);
