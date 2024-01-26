@@ -40,8 +40,10 @@ class RestoreOldAppData extends Controller
     public function storeProductOldapp(ProductRequest $request){
         $data = $request->validated();
             $data['currency_id'] = Country::find($data['country_id'])->Currency->id;
-        $images = $data['images'];
-        unset($data['images']);
+        if(isset($images)) {
+            $images = $data['images'];
+            unset($data['images']);
+        }
         $user = User::where('uid',$request->uid)->first();
         if(isset($user)){
             $data['user_id']=$user->user_id;
