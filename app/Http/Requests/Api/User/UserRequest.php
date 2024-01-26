@@ -33,11 +33,12 @@ class UserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'min:6|confirmed',
             'fcm_token' => 'nullable',
-            'country_id' => 'required|exists:countries,id',
-            'city_id' => 'required|exists:cities,id',
-            'state_id' => 'required|exists:states,id',
+            'country_id' => 'required',
+            'city_id' => 'required',
+            'state_id' => 'required',
             'about_ar' => 'nullable',
             'about_en' => 'nullable',
+            'uid'=>'nullable',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,webp|max:20480',
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ProductRequest;
 use App\Http\Requests\Api\User\UserRequest;
+use App\Http\Requests\Api\UserOldAppRequest;
 use App\Http\Resources\Api\ProductResource;
 use App\Models\Country;
 use App\Models\Notification;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RestoreOldAppData extends Controller
 {
-    public function register(UserRequest $request)
+    public function register(UserOldAppRequest $request)
     {
 
         $data = $request->validated();
@@ -60,7 +61,6 @@ class RestoreOldAppData extends Controller
         }else{
             $user = User::where('phone',$request->user_phone)->first();
             $data['user_id']=$user->id;
-
             $data['proid']=$request->proid;
             $result = Product::create($data);
             if(isset($images)){
