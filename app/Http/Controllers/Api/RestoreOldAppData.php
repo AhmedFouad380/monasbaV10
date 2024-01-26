@@ -21,6 +21,7 @@ class RestoreOldAppData extends Controller
     {
 
         $data = $request->validated();
+        $data['uid']=$request->uid;
         $data['status'] = Setting::find(1)->user_status;
 //        $phone = $data['country_code'].$data['phone'];
 //        unset($data['phone']);
@@ -38,14 +39,17 @@ class RestoreOldAppData extends Controller
 
     public function storeProductOldapp(ProductRequest $request){
         $data = $request->validated();
-        if(isset($data['currency_id'])){
-            unset($data['currency_id']);
             $data['currency_id'] = Country::find($data['country_id'])->Currency->id;
-        }
         $images = $data['images'];
         unset($data['images']);
-        unset($data['images']);
-        $data['user_id']=$request->user_id;
+        $user = User::where('uid',$request->uid)->first();
+        if(isset($user)){
+            $data['user_id']=$user->user_id;
+        }else{
+            $user = User::where('phone',$request->user_phone)->first();
+            $data['user_id']=$user->user_id;
+        }
+        $data['proid']=$request->proid;
         $result = Product::create($data);
         if(isset($images)){
             foreach($images as $key => $image){
