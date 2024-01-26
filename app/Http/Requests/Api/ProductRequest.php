@@ -49,7 +49,7 @@ class ProductRequest extends FormRequest
             'country_id'=>'required|exists:countries,id',
             'city_id'=>'required|exists:cities,id',
             'state_id'=>'required|exists:states,id',
-            'currency_id'=>'required|exists:currencies,id',
+            'currency_id'=>'nullable',
         ];
     }
 
