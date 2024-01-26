@@ -47,18 +47,29 @@ class RestoreOldAppData extends Controller
         $user = User::where('uid',$request->uid)->first();
         if(isset($user)){
             $data['user_id']=$user->user_id;
+            $data['proid']=$request->proid;
+            $result = Product::create($data);
+            if(isset($images)){
+                foreach($images as $key => $image){
+                    ProductImages::create([
+                        'product_id'=>$result->id,
+                        'image'=>$image,
+                    ]);
+                }
+            }
         }else{
             $user = User::where('phone',$request->user_phone)->first();
-            $data['user_id']=$user->user_id;
-        }
-        $data['proid']=$request->proid;
-        $result = Product::create($data);
-        if(isset($images)){
-            foreach($images as $key => $image){
-                ProductImages::create([
-                    'product_id'=>$result->id,
-                    'image'=>$image,
-                ]);
+            $data['user_id']=$user->id;
+
+            $data['proid']=$request->proid;
+            $result = Product::create($data);
+            if(isset($images)){
+                foreach($images as $key => $image){
+                    ProductImages::create([
+                        'product_id'=>$result->id,
+                        'image'=>$image,
+                    ]);
+                }
             }
         }
 
