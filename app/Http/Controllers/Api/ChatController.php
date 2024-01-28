@@ -241,7 +241,7 @@ class ChatController extends Controller
             'name_ar'=>$message,
             'name_en'=>$message_en,
             'user_id'=>$user->id,
-            'chat_id'=>$chat->id,
+            'chat_id'=>$request->chat_id,
             'type'=>$type
 
         ]);

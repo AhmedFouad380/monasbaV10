@@ -35,7 +35,6 @@ class Notification extends Model
                 return $chat->provider_id;
             }else{
                 return $chat->user_id;
-
             }
         }
         return null;

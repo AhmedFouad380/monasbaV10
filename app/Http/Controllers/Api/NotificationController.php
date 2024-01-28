@@ -17,7 +17,7 @@ class NotificationController extends Controller
     public function index()
     {
         Notification::OrderBy('id', 'desc')->where('user_id',Auth::guard('user')->user()->id)->update(['is_read'=>1]);
-        $result = Notification::OrderBy('id', 'desc')->where('user_id',Auth::guard('user')->user()->id);
+        $result = Notification::whereHas('UserID')->OrderBy('id', 'desc')->where('user_id',Auth::guard('user')->user()->id);
 
         $data = NotificationResource::collection($result->paginate(10))->response()->getData(true);
         return msgdata(true, trans('lang.data_display_success'), $data, success());
