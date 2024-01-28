@@ -148,7 +148,7 @@ class HomeController extends Controller
             return msg(false, $validator->errors()->first(), validation());
         }
         if(isset($request->sort) ){
-            $result = Product::where('status', 'active');
+            $result = Product::where('status', 'active')->whereHas('User');
             if($request->sort == 'near'){
                 $result->OrderBy('id','desc');
             }
