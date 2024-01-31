@@ -30,7 +30,7 @@ class UsersController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = $this->objectName::orderBy('id', 'desc');
+        $data = $this->objectName::orderBy('id', 'desc')->withTrashed();
 
         if ($request->phone) {
             $data = $data->where('phone', $request->phone);
