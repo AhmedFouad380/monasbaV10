@@ -59,6 +59,7 @@
                                 </div>
                             </th>
                             <th class="min-w-125px">{{__('lang.name')}}</th>
+                            <th class="min-w-125px">{{__('lang.id')}}</th>
                             <th class="min-w-125px">{{__('lang.uid')}}</th>
                             <th class="min-w-125px">{{__('lang.phone')}}</th>
                             <th class="min-w-125px">{{__('lang.active')}}</th>
@@ -160,6 +161,7 @@
                 columns: [
                     {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
                     {data: 'name', name: 'name', "searchable": true, "orderable": true},
+                    {data: 'id', name: 'id', "searchable": true, "orderable": true},
                     {data: 'uid', name: 'uid', "searchable": true, "orderable": true},
                     {data: 'phone', name: 'phone', "searchable": true, "orderable": true},
                     {data: 'is_active', name: 'is_active', "searchable": true, "orderable": true},
