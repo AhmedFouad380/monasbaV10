@@ -124,7 +124,7 @@ class SubCategoriesController extends Controller
         $result->update($data);
 
 //        editLog($result, 1, $this->route, "#", $result->ar_name);
-        return redirect(route($this->route . '.index'))->with('message', trans('lang.updated_s'));
+        return redirect(route($this->route . '.index',$request->category_id))->with('message', trans('lang.updated_s'));
     }
 
     /**
