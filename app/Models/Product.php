@@ -38,7 +38,7 @@ class Product extends Model
             return Storage::disk('s3')->url('uploads/products2/' . $image);
 //            return asset('uploads/admin') . '/' . $image;
         }else{
-            if($image2 = ProductImages::where('product_id',$this->attributes['id'])-    >first()){
+            if($image2 = ProductImages::where('product_id',$this->attributes['id'])->first()){
                 return $image2->image;
             }else{
                 return asset('defaults/user_default.png');
