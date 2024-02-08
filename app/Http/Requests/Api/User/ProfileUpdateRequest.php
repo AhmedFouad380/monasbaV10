@@ -30,7 +30,7 @@ class ProfileUpdateRequest extends FormRequest
 
         return [
             'name' => 'nullable|string|min:2|max:255',
-            'email' => 'nullable|email|unique:users,email,'.Auth::guard('user')->id(),
+            'email' => 'nullable|email',
             'country_id' => 'nullable|exists:countries,id',
             'city_id' => 'nullable|exists:cities,id',
             'state_id' => 'nullable|exists:states,id',

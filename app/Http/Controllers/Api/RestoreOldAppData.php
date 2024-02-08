@@ -46,6 +46,9 @@ class RestoreOldAppData extends Controller
             unset($data['images']);
         }
         $user = User::where('uid',$request->uid)->first();
+        $user2 = User::where('phone',$request->user_phone)->first();
+        $user3 = User::where('id',$request->uid)->first();
+
         if(isset($user)){
             $data['user_id']=$user->user_id;
             $data['proid']=$request->proid;
@@ -58,7 +61,7 @@ class RestoreOldAppData extends Controller
                     ]);
                 }
             }
-        }else{
+        }elseif(isset($user2)){
             $user = User::where('phone',$request->user_phone)->first();
             $data['user_id']=$user->id;
             $data['proid']=$request->proid;
@@ -71,8 +74,19 @@ class RestoreOldAppData extends Controller
                     ]);
                 }
             }
+        }else{
+            $data['user_id']=$user3->id;
+            $data['proid']=$request->proid;
+            $result = Product::create($data);
+            if(isset($images)){
+                foreach($images as $key => $image){
+                    ProductImages::create([
+                        'product_id'=>$result->id,
+                        'image'=>$image,
+                    ]);
+                }
+            }
         }
-
         // Notifcation For follwers
         $tokens = [];
         if(isset(Auth::guard('user')->user()->Notifyfollowers)){
