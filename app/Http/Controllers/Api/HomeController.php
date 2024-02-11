@@ -164,7 +164,7 @@ class HomeController extends Controller
         }else{
             $result = Product::whereHas('User')->OrderBy('id', 'desc')->where('status', 'active');
         }
-
+    
         if (isset($request->search)) {
             $result->where(function ($q) use ($request) {
                 $q->where('name_ar', 'like', '%' . $request->search . '%')->Orwhere('name_en', 'like', '%' . $request->search . '%');
