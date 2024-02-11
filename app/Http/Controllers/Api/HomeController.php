@@ -162,7 +162,7 @@ class HomeController extends Controller
                 $result->OrderBy('id','desc');
             }
         }else{
-            $result = Product::OrderBy('id', 'desc')->where('status', 'active');
+            $result = Product::whereHas('User')->OrderBy('id', 'desc')->where('status', 'active');
         }
 
         if (isset($request->search)) {
