@@ -17,6 +17,8 @@ class ProductImages extends Model
         if (!empty($image)) {
             return Storage::disk('s3')->url('uploads/products2/' . $image);
 //            return asset('uploads/admin') . '/' . $image;
+        }else{
+            return Product::find($this->attributes['product_id'])->image;
         }
         return asset('defaults/user_default.png');
     }
