@@ -13,7 +13,7 @@
 
         @inject('users','App\Models\User')
         @foreach($users->select(['id','name'])->get() as $user)
-            <option value="{{$user->id}}">{{$user->name}}</option>
+            <option value="{{$user->id}}" @if($data-user_id == $user-id) selected @endif >{{$user->name}}</option>
         @endforeach
 
     </select>
