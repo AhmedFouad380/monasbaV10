@@ -25,6 +25,16 @@
 </div>
 
 <div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.code')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input type="text" name="country_code"
+           class="form-control form-control-solid mb-3 mb-lg-0"
+           placeholder="" value="{{old('code',$data->country_code ?? '')}}" required/>
+    <!--end::Input-->
+</div>
+<div class="fv-row mb-7">
     <div
         class="form-check form-switch form-check-custom form-check-solid">
         <label class="form-check-label" for="flexSwitchDefault">{{__('lang.active')}}</label>
