@@ -164,7 +164,7 @@ class HomeController extends Controller
         }else{
             $result = Product::whereHas('User')->OrderBy('id', 'desc')->where('status', 'active');
         }
-    
+
         if (isset($request->search)) {
             $result->where(function ($q) use ($request) {
                 $q->where('name_ar', 'like', '%' . $request->search . '%')->Orwhere('name_en', 'like', '%' . $request->search . '%');
@@ -214,8 +214,10 @@ class HomeController extends Controller
     public function storeProduct(ProductRequest $request){
         $data = $request->validated();
 
-        $images = $data['images'];
-        unset($data['images']);
+        if(isset($data['images'])){
+            $images = $data['images'];
+            unset($data['images']);
+        }
         $data['user_id']=Auth::guard('user')->user()->id;
         $result = Product::create($data);
         if(isset($images)){
