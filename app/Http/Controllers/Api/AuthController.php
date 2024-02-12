@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Twilio\Rest\Client;
 
@@ -53,12 +54,12 @@ class AuthController extends Controller
     public function register(UserRequest $request)
     {
 
-        $data = $request->validated();
-        $data['status'] = Setting::find(1)->user_status;
+        $dataa = $request->validated();
+        $dataa['status'] = Setting::find(1)->user_status;
 //        $phone = $data['country_code'].$data['phone'];
 //        unset($data['phone']);
 //        $data['phone'] = $phone;
-        $user = User::create($data);
+        $user = User::create($dataa);
         //sending otp to user
 //        $phone = $data['country_code'] .$data['phone'];
 //        $otp = \Otp::generate($phone);
@@ -66,6 +67,10 @@ class AuthController extends Controller
             $otp = "9999";
 //        }
         $result['otp'] = $otp;
+
+        $data = $otp;
+        Mail::to($data['email'])->send(new VerifyPhone($data));
+
         return msgdata(true, trans('lang.sign_up_success'), $result, success());
     }
 
@@ -90,6 +95,7 @@ class AuthController extends Controller
                     $receiverNumber = $client->phone;
                     $message = "Otp  : " . $otp;
 
+                    $data = $otp;
 //                    $account_sid = getenv("TWILIO_SID");
 //                    $auth_token = getenv("TWILIO_TOKEN");
 //                    $twilio_number = getenv("TWILIO_FROM");
@@ -99,7 +105,7 @@ class AuthController extends Controller
 //                        'from' => $twilio_number,
 //                        'body' => $message]);
 //
-//                    Mail::to($client->email)->send(new VerifyPhone($message));
+                    Mail::to($client->email)->send(new VerifyPhone($data));
 
                     return msg(true, trans('lang.phone_verified_s'), success());
                 } else {
@@ -132,16 +138,22 @@ class AuthController extends Controller
     {
         $data = $request->validated();
 
-        $phone = $data['country_code']  . $data['phone'];
+        $phone = $data['phone'];
+        $client = User::where('phone',$data['phone'])->first();
         $otp = \Otp::generate($phone);
         if (env('APP_ENV') == 'local') {
             $otp = "9999";
         }
         $result['otp'] = $otp;
+        $data = $otp;
         //TODO :send sms to phone number ...
         //Smsmisr::send("كود التحقق الخاص بك هو: " . $otp, $request->phone, null, 2);
         //sendSMS2($request->phone,$otp);
         //end sending
+//        dd($client->email);
+        Mail::to($client->email)->send(new VerifyPhone($data));
+
+
         return msgdata(true, trans('lang.code_send_again_s'), $result, success());
     }
 

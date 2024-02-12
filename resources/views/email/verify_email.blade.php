@@ -233,7 +233,7 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:32px;">
                                                 <div style="color:#555555;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:38px;line-height:120%;text-align:center;mso-line-height-alt:45.6px;">
-                                                    <p style="margin: 0; word-break: break-word;"><span style="color: #053f80;"><span><strong>7741</strong></span></span></p>
+                                                    <p style="margin: 0; word-break: break-word;"><span style="color: #053f80;"><span><strong>{{$data}}</strong></span></span></p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -360,7 +360,7 @@
                                         <tr>
                                             <td class="pad" style="padding-bottom:30px;padding-left:40px;padding-right:40px;padding-top:20px;">
                                                 <div style="color:#555555;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:12px;line-height:120%;text-align:left;mso-line-height-alt:14.399999999999999px;">
-                                                    <p style="margin: 0; word-break: break-word;"><span style="color:#053f80;">Exas Copyright © 2023</span></p>
+                                                    <p style="margin: 0; word-break: break-word;"><span style="color:#053f80;">monasba Copyright © 2023</span></p>
                                                 </div>
                                             </td>
                                         </tr>

@@ -28,7 +28,9 @@ class VerifyPhone extends Mailable
      */
     public function build()
     {
+        return $this->markdown('email.verify_email', ["data" => $this->data]);
+
         return $this->subject('Verify Email')
-            ->view('emails.newOrder');
+            ->view('email.verify_email')->with('data', $this->data);;
     }
 }

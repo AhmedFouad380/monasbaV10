@@ -26,7 +26,7 @@ class ResendVerifyPhoneRequest extends FormRequest
     public function rules()
     {
         return [
-            'country_code' => 'required|string',
+//            'country_code' => 'required|string',
             'phone' => 'required|string|exists:users,phone',
         ];
     }
