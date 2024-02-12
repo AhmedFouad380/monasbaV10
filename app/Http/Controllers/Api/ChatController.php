@@ -247,8 +247,11 @@ class ChatController extends Controller
         ]);
         if(isset($user->fcm_token)){
             $tokens[]=$user->fcm_token;
-            send($tokens ,$title ,$message,Auth::guard('user')->user()->id ,$type);
+          $log =  send($tokens ,$title ,$message,Auth::guard('user')->user()->id ,$type);
         }
+        dd($log);
+
+
         return callback_data(success(), 'save_success', $data);
 
     }
