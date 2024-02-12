@@ -496,13 +496,13 @@ class HomeController extends Controller
     public function forceUpdate(ForceUpdateRequest $request){
 
         if($request->type == 'ios'){
-            if(Setting::find(1)->ios_version == $request->version){
+            if(Setting::find(1)->ios_version <= $request->version){
                 $data['isForceUpdate'] =false;
             }else{
                 $data['isForceUpdate'] =true;
             }
         }else{
-            if(Setting::find(1)->android_version == $request->version){
+            if(Setting::find(1)->android_version <= $request->version){
                 $data['isForceUpdate'] =false;
             }else{
                 $data['isForceUpdate'] =true;
