@@ -69,7 +69,7 @@ class AuthController extends Controller
         $result['otp'] = $otp;
 
         $data = $otp;
-        Mail::to($data['email'])->send(new VerifyPhone($data));
+        Mail::to($dataa['email'])->send(new VerifyPhone($data));
 
         return msgdata(true, trans('lang.sign_up_success'), $result, success());
     }
