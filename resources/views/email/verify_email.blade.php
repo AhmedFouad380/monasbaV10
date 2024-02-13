@@ -4,5 +4,5 @@
         <h1>{{ $data }}</h1>
         thanks, <br>
     @endcomponent
-    {{ config('app.name') }}
+    {{ config('app.name') }}    
 </div>

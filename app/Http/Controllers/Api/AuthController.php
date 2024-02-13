@@ -61,11 +61,11 @@ class AuthController extends Controller
 //        $data['phone'] = $phone;
         $user = User::create($dataa);
         //sending otp to user
-//        $phone = $data['country_code'] .$data['phone'];
-//        $otp = \Otp::generate($phone);
-//        if (env('APP_ENV') == 'local') {
+        $phone =  $dataa['phone'];
+       $otp = \Otp::generate($phone);
+        if (env('APP_ENV') == 'local') {
             $otp = "9999";
-//        }
+        }
         $result['otp'] = $otp;
 
         $data = $otp;
