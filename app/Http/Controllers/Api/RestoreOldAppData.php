@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ProductOldAppRequest;
 use App\Http\Requests\Api\ProductRequest;
 use App\Http\Requests\Api\User\UserRequest;
 use App\Http\Requests\Api\UserOldAppRequest;
@@ -38,7 +39,7 @@ class RestoreOldAppData extends Controller
         return msgdata(true, trans('lang.sign_up_success'), $result, success());
     }
 
-    public function storeProductOldapp(ProductRequest $request){
+    public function storeProductOldapp(ProductOldAppRequest $request){
         $data = $request->validated();
             $data['currency_id'] = Country::find($data['country_id'])->Currency->id;
         if(isset($images)) {
