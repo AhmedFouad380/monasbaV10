@@ -468,7 +468,12 @@ class HomeController extends Controller
         $ip = $request->ip();
         if ($position = Location::get($ip)) {
             $data = Country::where('name_en','like','%'.$position->countryName.'%')->first();
+
             if(isset($data)){
+                if($data->id == 2){
+                    $country=  CountriesResource::make(Country::where('id',6)->first());
+                    return msgdata(true, trans('lang.data_display_success'), $country, success());
+                }
                 $country=  CountriesResource::make($data);
                 return msgdata(true, trans('lang.data_display_success'), $country, success());
             }else{

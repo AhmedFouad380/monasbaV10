@@ -49,6 +49,9 @@ class ChatController extends Controller
         if (!is_array($validator) && $validator->fails()) {
             return callback_data(error(), $validator->errors()->first());
         }
+        if($request->user_id == Auth::guard('user')->id()){
+            return callback_data(error(), "عفوا لا يمكن ارسال رساله لنفسك ");
+        }
         if(isset($request->product_id)){
             $product = Product::find($request->product_id);
             $chat = Chat::where('product_id',$request->product_id)->with('User','Profile')->first();
