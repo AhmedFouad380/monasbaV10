@@ -20,7 +20,7 @@ class CountriesResource extends JsonResource
             'country_code'=>$this->country_code,
             'number_limit'=>$this->number_limit,
             'image'=>$this->image,
-            'is_active'=>$this->is_active,
+            'status'=>$this->status,
             'currency'=>$this->Currency
         ];
     }
