@@ -242,6 +242,7 @@ class AuthController extends Controller
         //   $message->subject('Reset Password');
         //    });
         $result['otp'] = (string)$token;
+//        Mail::to($client->email)->send(new VerifyPhone($result['otp']));
 
         return msgdata(true, trans('lang.email_sent'), $result, success());
     }

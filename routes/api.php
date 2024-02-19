@@ -29,6 +29,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/force_update', [HomeController::class, 'forceUpdate']);
 
 Route::prefix('client')->group(function () {
+    Route::get('/setting', [HomeController::class, 'setting'])->name('setting');
+
     Route::get('/current_location', [HomeController::class, 'currentLocation'])->name('current_location');
 
     Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
@@ -124,7 +126,6 @@ Route::prefix('client')->group(function () {
         Route::post('/report-comment', [\App\Http\Controllers\Api\ReportController::class, 'store'])->name('reportComment');
         Route::post('/report', [\App\Http\Controllers\Api\ReportController::class, 'chatReport'])->name('chatReport');
 
-        Route::get('/setting', [HomeController::class, 'setting'])->name('setting');
 
         Route::prefix('chat')->group(function () {
             Route::get('/', [ChatController::class, 'index']);
