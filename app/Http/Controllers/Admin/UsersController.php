@@ -160,9 +160,6 @@ class UsersController extends Controller
     {
         $results = $this->objectName::whereIn('id', $request->id)->get();
         Product::where('user_id',$request->id)->delete();
-        foreach ($results as $key => $result) {
-            delLog($result, 1, $this->route, $result->first_name);
-        }
 
         $this->objectName::whereIn('id', $request->id)->delete();
 
