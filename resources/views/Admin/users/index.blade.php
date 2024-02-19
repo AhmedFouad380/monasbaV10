@@ -45,6 +45,7 @@
 
                             <th class="min-w-125px">{{__('lang.image')}}</th>
                             <th class="min-w-125px">{{__('lang.name')}}</th>
+                            <th class="min-w-125px">{{__('lang.username')}}</th>
                             <th class="min-w-125px">{{__('lang.email')}}</th>
                             <th class="min-w-125px">{{__('lang.phone')}}</th>
                             <th class="min-w-125px">{{__('lang.Users_active')}}</th>
@@ -299,6 +300,7 @@
                     },
                     {data: 'name', name: 'name', "searchable": true, "orderable": true},
                     {data: 'email', name: 'email', "searchable": true, "orderable": true},
+                    {data: 'username', name: 'username', "searchable": true, "orderable": true},
                     {data: 'user_phone', name: 'user_phone', "searchable": true, "orderable": true},
                     {data: 'status', name: 'status', "searchable": true, "orderable": true},
                     {data: 'actions', name: 'actions', "searchable": false, "orderable": false},
