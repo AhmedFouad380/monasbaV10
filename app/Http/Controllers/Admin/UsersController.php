@@ -158,14 +158,15 @@ class UsersController extends Controller
      */
     public function destroy(Request $request)
     {
-        try {
-            $results = $this->objectName::whereIn('id', $request->id)->get();
-            Product::where('user_id',$request->id)->delete();
-            foreach ($results as $key => $result) {
-                delLog($result, 1, $this->route, $result->first_name);
-            }
+        $results = $this->objectName::whereIn('id', $request->id)->get();
+        Product::where('user_id',$request->id)->delete();
+        foreach ($results as $key => $result) {
+            delLog($result, 1, $this->route, $result->first_name);
+        }
 
-            $this->objectName::whereIn('id', $request->id)->delete();
+        $this->objectName::whereIn('id', $request->id)->delete();
+
+        try {
         } catch (\Exception $e) {
             return response()->json(['message' => 'Failed']);
         }
