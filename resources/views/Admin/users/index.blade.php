@@ -45,8 +45,8 @@
 
                             <th class="min-w-125px">{{__('lang.image')}}</th>
                             <th class="min-w-125px">{{__('lang.name')}}</th>
-                            <th class="min-w-125px">{{__('lang.username')}}</th>
                             <th class="min-w-125px">{{__('lang.email')}}</th>
+                            <th class="min-w-125px">{{__('lang.username')}}</th>
                             <th class="min-w-125px">{{__('lang.phone')}}</th>
                             <th class="min-w-125px">{{__('lang.Users_active')}}</th>
                             <th class="min-w-125px">{{__('lang.Actions')}}</th>
