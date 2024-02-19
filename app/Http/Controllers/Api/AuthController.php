@@ -308,6 +308,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        User::find(auth('user')->id())->update(['fcm_token'=>null]);
         auth('user')->logout();
         return msg(true, trans('lang.logout_s'), success());
     }
