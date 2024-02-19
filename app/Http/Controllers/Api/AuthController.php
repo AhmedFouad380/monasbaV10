@@ -171,7 +171,7 @@ class AuthController extends Controller
         if (!is_array($validator) && $validator->fails()) {
             return msg(false, $validator->errors()->first(), validation());
         }
-        $client = (new UserResource(User::find($request->profile_id)));
+        $client =  UserResource::collection(User::find($request->profile_id))->response()->getData(true);
 
         return msgdata(true, trans('lang.data_display_success'), $client, success());
     }
