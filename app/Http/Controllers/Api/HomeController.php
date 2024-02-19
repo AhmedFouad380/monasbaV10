@@ -299,7 +299,7 @@ class HomeController extends Controller
         }
         $data['user_id']=Auth::guard('user')->user()->id;
         if($request->image){
-            $video = upload($request->image, 'products');
+            $video = upload($request->image, 'products2');
             $data['image'] =  $video;
         }else{
             unset($data['image']);
