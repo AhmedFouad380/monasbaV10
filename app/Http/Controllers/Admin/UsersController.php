@@ -161,7 +161,7 @@ class UsersController extends Controller
         $results = $this->objectName::whereIn('id', $request->id)->get();
         Product::where('user_id',$request->id)->delete();
 
-        $this->objectName::whereIn('id', $request->id)->delete();
+        $this->objectName::whereIn('id', $request->id)->forceDelete();
 
         try {
         } catch (\Exception $e) {
