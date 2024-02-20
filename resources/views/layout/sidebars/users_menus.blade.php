@@ -1,5 +1,5 @@
 {{--@if(request()->segment(1) != 'ready' && request()->segment(1) != 'cars') active show @endif--}}
-<div class="tab-pane fade  @if( request()->segment(1) == '' ) active show @endif" id="kt_aside_nav_tab_menu2"
+<div class="tab-pane fade  @if( request()->segment(1) == '/' ) active show @endif" id="kt_aside_nav_tab_menu2"
      role="tabpanel">
     <div
         class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 px-6 my-5 my-lg-0"
