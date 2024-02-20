@@ -46,7 +46,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('Setting', [\App\Http\Controllers\Admin\AdminsController::class, 'Setting'])->name('profile');
     Route::post('UpdateProfile', [\App\Http\Controllers\Admin\AdminsController::class, 'UpdateProfile'])->name('UpdateProfile');
 
-    Route::get('/', [HomeController::class, 'index'])->name('dashboard.index');
+    Route::get('/', function (){
+        return redirect('dashboard');
+    });
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
 
 
     Route::group(['prefix' => 'users', 'as' => 'users'], function () {
