@@ -56,13 +56,12 @@ class AuthController extends Controller
 
         $dataa = $request->validated();
         $dataa['status'] = Setting::find(1)->user_status;
-//        $phone = $data['country_code'].$data['phone'];
+        $phone = $dataa['phone'];
 //        unset($data['phone']);
 //        $data['phone'] = $phone;
         $user = User::create($dataa);
         //sending otp to user
-        $phone =  $dataa['phone'];
-       $otp = \Otp::generate($phone);
+        $phon= \Otp::generate($phone);
         if (env('APP_ENV') == 'local') {
             $otp = "9999";
         }
@@ -80,41 +79,6 @@ class AuthController extends Controller
 
         $phone =  $data['phone'];
 
-        if (env('APP_ENV') == 'local') {
-            if ($data['otp'] == '9999') {
-                $client = User::where('phone', $data['phone'])->first();
-                if ($client) {
-                    $client->email_verified_at = Carbon::now();
-                    $client->save();
-
-                    $otp = \Otp::generate($phone);
-                    if (env('APP_ENV') == 'local') {
-                        $otp = "9999";
-                    }
-                    $result['otp'] = $otp;
-                    $receiverNumber = $client->phone;
-                    $message = "Otp  : " . $otp;
-
-                    $data = $otp;
-//                    $account_sid = getenv("TWILIO_SID");
-//                    $auth_token = getenv("TWILIO_TOKEN");
-//                    $twilio_number = getenv("TWILIO_FROM");
-//
-//                    $clientSMS = new Client($account_sid, $auth_token);
-//                    $clientSMS->messages->create($receiverNumber, [
-//                        'from' => $twilio_number,
-//                        'body' => $message]);
-//
-                    Mail::to($client->email)->send(new VerifyPhone($data));
-
-                    return msg(true, trans('lang.phone_verified_s'), success());
-                } else {
-                    return msg(false, trans('lang.client_not_found'), failed());
-                }
-            } else {
-                return msg(false, trans('lang.otp_invalid'), failed());
-            }
-        } else {
             $validated_otp = \Otp::validate($phone, $data['otp']);
 
             if ($validated_otp->status == true) {
@@ -132,7 +96,6 @@ class AuthController extends Controller
             }
         }
 
-    }
 
     public function resendVerifyPhone(ResendVerifyPhoneRequest $request)
     {
