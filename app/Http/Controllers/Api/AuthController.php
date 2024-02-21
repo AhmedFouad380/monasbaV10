@@ -37,7 +37,7 @@ class AuthController extends Controller
         }
         if (Auth::guard('user')->user()->email_verified_at == null) {
             auth('user')->logout();
-            return msg(false, trans('lang.verify_phone_first'), 401);
+            return msg(false, trans('lang.verify_phone_first'), 403);
         }
         $result['token'] = $token;
         $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
@@ -114,7 +114,7 @@ class AuthController extends Controller
         //sendSMS2($request->phone,$otp);
         //end sending
 //        dd($client->email);
-        Mail::to($client->email)->send(new VerifyPhone($data));
+        Mail::to($dataa['email'])->send(new VerifyPhone($data));
 
 
         return msgdata(true, trans('lang.code_send_again_s'), $result, success());
