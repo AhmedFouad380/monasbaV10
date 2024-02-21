@@ -37,7 +37,7 @@ class AuthController extends Controller
         }
         if (Auth::guard('user')->user()->email_verified_at == null) {
             auth('user')->logout();
-            return msg(false, trans('lang.verify_phone_first'), failed());
+            return msg(false, trans('lang.verify_phone_first'), 401);
         }
         $result['token'] = $token;
         $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
