@@ -35,10 +35,10 @@ class AuthController extends Controller
         if (!$token) {
                 return msg(false, trans('lang.invalid_account'), failed());
         }
-//        if (Auth::guard('user')->user()->email_verified_at == null) {
-//            auth('user')->logout();
-//            return msg(false, trans('lang.verify_phone_first'), failed());
-//        }
+        if (Auth::guard('user')->user()->email_verified_at == null) {
+            auth('user')->logout();
+            return msg(false, trans('lang.verify_phone_first'), failed());
+        }
         $result['token'] = $token;
         $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
         $result['country'] = Auth::guard('user')->user()->Country ?CountriesResource::make(Auth::guard('user')->user()->Country)  : null;
