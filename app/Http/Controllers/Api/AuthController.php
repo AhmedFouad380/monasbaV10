@@ -61,7 +61,7 @@ class AuthController extends Controller
 //        $data['phone'] = $phone;
         $user = User::create($dataa);
         //sending otp to user
-        $phon= \Otp::generate($phone);
+        $otp= \Otp::generate($phone);
         if (env('APP_ENV') == 'local') {
             $otp = "9999";
         }

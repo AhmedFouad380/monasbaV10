@@ -8,7 +8,7 @@
 
 
             <div class="menu-item">
-                <a class="menu-link @if(request()->segment(1) == 'dashboard'  ) active @endif "
+                <a class="menu-link @if(request()->segment(1) == 'dashboard' ) active @endif "
                    href="{{url('/dashboard')}}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
