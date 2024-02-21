@@ -99,10 +99,11 @@ class AuthController extends Controller
 
     public function resendVerifyPhone(ResendVerifyPhoneRequest $request)
     {
-        $data = $request->validated();
+//        $data = $request->validated();
+        $dataa = $request->validated();
 
-        $phone = $data['phone'];
-        $client = User::where('phone',$data['phone'])->first();
+        $phone = $dataa['phone'];
+        $client = User::where('phone',$dataa['phone'])->first();
         $otp = \Otp::generate($phone);
         if (env('APP_ENV') == 'local') {
             $otp = "9999";
