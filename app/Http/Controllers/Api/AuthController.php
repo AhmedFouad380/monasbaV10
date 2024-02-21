@@ -115,7 +115,7 @@ class AuthController extends Controller
         //sendSMS2($request->phone,$otp);
         //end sending
 //        dd($client->email);
-        Mail::to($dataa['email'])->send(new VerifyPhone($data));
+        Mail::to($client['email'])->send(new VerifyPhone($data));
 
 
         return msgdata(true, trans('lang.code_send_again_s'), $result, success());
