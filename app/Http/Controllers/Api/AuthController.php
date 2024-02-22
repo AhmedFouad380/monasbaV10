@@ -78,6 +78,7 @@ class AuthController extends Controller
         $data = $request->validated();
 
         $phone =  $data['phone'];
+        $credentials = $request->only( 'phone');
 
             $validated_otp = \Otp::validate($phone, $data['otp']);
 
@@ -86,7 +87,7 @@ class AuthController extends Controller
                 if ($client) {
                     $client->email_verified_at = Carbon::now();
                     $client->save();
-                    $token = Auth::guard('user')->attempt($data['phone']);
+                    $token = Auth::guard('user')->attempt($credentials);
                     $client['token']=$token;
                     return msgdata(true, trans('lang.phone_verified_s'), $client, success());
 
