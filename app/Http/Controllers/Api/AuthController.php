@@ -86,7 +86,11 @@ class AuthController extends Controller
                 if ($client) {
                     $client->email_verified_at = Carbon::now();
                     $client->save();
-                    return msg(true, trans('lang.phone_verified_s'), success());
+                    $token = Auth::guard('user')->attempt($data['phone']);
+                    $client['token']=$token;
+                    return msgdata(true, trans('lang.phone_verified_s'), $client, success());
+
+                    return msg(true, trans('lang.phone_verified_s'), success() ,);
                 } else {
                     return msg(false, trans('lang.client_not_found'), failed());
                 }
