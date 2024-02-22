@@ -91,7 +91,7 @@ class AuthController extends Controller
                     $client->save();
                     $token = JWTAuth::fromUser($client);
                     $result['token'] = $token;
-                    $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
+                    $result['client_data'] = UserResource::make($client) ;
                     return msgdata(true, trans('lang.phone_verified_s'), $result, success());
 
 //                    return msg(true, trans('lang.phone_verified_s'), success() ,);
