@@ -2,6 +2,7 @@
 
 return [
     'login_first'=>'you should login first',
+    'user_inactive'=>'Sorry, the account has been disabled by the administration. Please contact us to find out the reason',
     'country_code' => 'country code ',
     'please choose at least one item'=>'please choose at least one item',
     'is_popular'=>'is popular',
@@ -356,7 +357,6 @@ return [
     'order' => 'order',
     'unit_en' => ' english unit',
     'unit_ar' => ' Arabic Unit',
-
 
     'Message_Cancelled' => 'operation Cancelled',
     'Success_text_rejected' => 'Success rejected',
