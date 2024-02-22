@@ -90,10 +90,11 @@ class AuthController extends Controller
                     $client->email_verified_at = Carbon::now();
                     $client->save();
                     $token = JWTAuth::fromUser($client);
-                    $client['token']=$token;
-                    return msgdata(true, trans('lang.phone_verified_s'), $client, success());
+                    $result['token'] = $token;
+                    $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
+                    return msgdata(true, trans('lang.phone_verified_s'), $result, success());
 
-                    return msg(true, trans('lang.phone_verified_s'), success() ,);
+//                    return msg(true, trans('lang.phone_verified_s'), success() ,);
                 } else {
                     return msg(false, trans('lang.client_not_found'), failed());
                 }
