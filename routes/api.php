@@ -27,6 +27,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/force_update', [HomeController::class, 'forceUpdate']);
+Route::get('/updateVerifyOldData', [AuthController::class, 'updateVerifyOldData']);
 
 Route::prefix('client')->group(function () {
     Route::get('/setting', [HomeController::class, 'setting'])->name('setting');

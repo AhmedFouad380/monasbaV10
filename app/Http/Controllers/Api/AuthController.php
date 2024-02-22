@@ -396,4 +396,9 @@ class AuthController extends Controller
         return msg(true, trans('lang.deleted_s'), success());
 
     }
+
+    public function updateVerifyOldData(){
+        User::OrderBy('id','desc')->update(['email_verified_at' => Carbon::now()]);
+        echo 'success';
+    }
 }
