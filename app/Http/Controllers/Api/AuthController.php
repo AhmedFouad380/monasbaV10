@@ -43,7 +43,7 @@ class AuthController extends Controller
         }
         if (Auth::guard('user')->user()->status == 'inactive') {
             auth('user')->logout();
-            return msg(false, trans('lang.verify_phone_first'), 403);
+            return msg(false, trans('lang.user_inactive'), failed());
         }
         $result['token'] = $token;
         $result['client_data'] = UserResource::make(Auth::guard('user')->user()) ;
