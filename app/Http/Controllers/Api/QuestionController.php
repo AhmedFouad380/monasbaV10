@@ -20,7 +20,12 @@ class QuestionController extends Controller
     {
 
         $result = Question::OrderBy('id', 'desc');
-
+        if (isset($request->country_id)) {
+            $result->where('country_id',$request->country_id);
+        }
+        if (isset($request->city_id)) {
+            $result->where('city_id',$request->city_id);
+        }
         if (isset($request->search)) {
             $result->where(function ($q) use ($request) {
                 $q->where('description', 'like', '%' . $request->search . '%');

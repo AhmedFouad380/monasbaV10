@@ -27,6 +27,8 @@ class QuestionRequest extends FormRequest
     {
         return [
             'description'=>'required',
+            'country_id'=>'nullable',
+            'city_id'=>'nullable',
         ];
     }
 

@@ -24,7 +24,7 @@ class ChatController extends Controller
 //        if (!is_array($validator) && $validator->fails()) {
 //            return callback_data(error(), $validator->errors()->first());
 //        }
-        $result  = Chat::where(function ($q){
+        $result  = Chat::OrderBy('id','desc')->where(function ($q){
             $q->where('user_id',Auth::guard('user')->user()->id)->Orwhere('provider_id',Auth::guard('user')->user()->id);
         })->whereHas('Provider',function ($q){
             $q->where('deleted_at',null);
@@ -54,7 +54,7 @@ class ChatController extends Controller
         }
         if(isset($request->product_id)){
             $product = Product::find($request->product_id);
-            $chat = Chat::where('product_id',$request->product_id)->with('User','Profile')->first();
+            $chat = Chat::OrderBy('id','desc')->where('product_id',$request->product_id)->with('User','Profile')->first();
 //        $chat  = Chat::where(function ($q) use ($request){
 //            $q->where('user_id',Auth::guard('user')->user()->id)->where('provider_id',$request->user_id);
 //        })->OrWhere(function ($q)use ($request){
