@@ -38,6 +38,19 @@ class AuthController extends Controller
                 return msg(false, trans('lang.invalid_account'), failed());
         }
         if (Auth::guard('user')->user()->email_verified_at == null) {
+            $otp = \Otp::generate(Auth::guard('user')->user()->phone);
+            $email = Auth::guard('user')->user()->email;
+            if (env('APP_ENV') == 'local') {
+                $otp = "9999";
+            }
+            $result['otp'] = $otp;
+            $data = $otp;
+            //TODO :send sms to phone number ...
+            //Smsmisr::send("كود التحقق الخاص بك هو: " . $otp, $request->phone, null, 2);
+            //sendSMS2($request->phone,$otp);
+            //end sending
+//        dd($client->email);
+            Mail::to($email)->send(new VerifyPhone($data));
             auth('user')->logout();
             return msg(false, trans('lang.verify_phone_first'), 403);
         }
