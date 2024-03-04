@@ -203,7 +203,7 @@ return [
     'ready_service' => 'خدمة مستعد',
     'basic_menus' => 'القوائم الرئيسية',
     'page_type' => 'نوع الصفحة',
-    'sliders' => 'صور الاعلانات',
+    'sliders' => 'صور المنزلق',
 
     'please_wait' => 'برجاء الانتظار',
     'number' => 'الرقم',
