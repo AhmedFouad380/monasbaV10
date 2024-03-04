@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\App;
 
 class Category extends Model
 {
@@ -49,5 +50,9 @@ class Category extends Model
 //            $image->move(public_path('/uploads/admin/'), $img_name);
             $this->attributes['image'] = $img_name;
         }
+    }
+
+    public function subCategories(){
+        return $this->hasMany(SubCategory::class,'category_id');
     }
 }

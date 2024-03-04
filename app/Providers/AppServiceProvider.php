@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\Api\CountriesResource;
+use App\Models\Country;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use Stevebauman\Location\Facades\Location;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +41,24 @@ class AppServiceProvider extends ServiceProvider
         }
 
         if (!session()->has('lang')) {
-            session()->put('lang', 'en');
+            session()->put('lang', 'ar');
         }
+            if ($position = Location::get(request()->ip())) {
+                $data = Country::where('name_en','like','%'.$position->countryName.'%')->first();
+
+                if(isset($data)){
+                    if($data->id == 2){
+                        $country=  CountriesResource::make(Country::where('id',6)->first());
+                        session()->put('country', $country->id);
+                    }
+                    session()->put('country', $data->id);
+                }else{
+                    $country=  CountriesResource::make(Country::where('id',6)->first());
+                    session()->put('country', $country->id);
+                }
+            }else{
+                $country=  CountriesResource::make(Country::where('id',6)->first());
+                session()->put('country', $country->id);
+            }
     }
 }

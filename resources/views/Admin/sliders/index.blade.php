@@ -44,7 +44,6 @@
                             </th>
 
                             <th class="min-w-125px">{{__('lang.image')}}</th>
-                            <th class="min-w-125px">{{__('lang.page_type')}}</th>
                             <th class="min-w-125px">{{__('lang.name_ar')}}</th>
                             <th class="min-w-125px">{{__('lang.name_en')}}</th>
                             <th class="min-w-125px">{{__('lang.Users_active')}}</th>
@@ -154,10 +153,9 @@
                             return "<img src=\"" + data + "\" height=\"50\"/>";
                         }
                     },
-                    {data: 'type_trans', name: 'type_trans', "searchable": true, "orderable": true},
-                    {data: 'name_ar', name: 'name_ar', "searchable": true, "orderable": true},
-                    {data: 'name_en', name: 'name_en', "searchable": true, "orderable": true},
-                    {data: 'is_active', name: 'is_active', "searchable": true, "orderable": true},
+                    {data: 'title_ar', name: 'title_ar', "searchable": true, "orderable": true},
+                    {data: 'title_en', name: 'title_en', "searchable": true, "orderable": true},
+                    {data: 'status', name: 'status', "searchable": true, "orderable": true},
                     {data: 'actions', name: 'actions', "searchable": false, "orderable": false},
                 ]
             });

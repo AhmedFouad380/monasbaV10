@@ -1,7 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\WebsiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('lang/{lang}', function ($lang) {
 
+
     if (session()->has('lang')) {
         session()->forget('lang');
     }
@@ -26,12 +28,24 @@ Route::get('lang/{lang}', function ($lang) {
         session()->put('lang', 'ar');
     }
 
-
     return back();
 });
 
 Route::get('test-env',function (){
     return env('PUSHER_APP_KEY');
+});
+Route::get('category/{id}', [WebsiteController::class, 'category']);
+Route::get('product/{id}', [WebsiteController::class, 'product']);
+Route::get('ajax/product/{id}', [WebsiteController::class, 'ajaxProduct']);
+Route::post('add-comment', [WebsiteController::class, 'addComment']);
+Route::get('Contact', [WebsiteController::class, 'Contact']);
+Route::post('store_contact', [WebsiteController::class, 'storeContact']);
+Route::get('change_country', [WebsiteController::class, 'changeCountry']);
+Route::get('store-subscribe', [WebsiteController::class, 'storeSubscribe']);
+
+
+Route::get('/', function (){
+    return view('website.index');
 });
 
 

@@ -36,7 +36,7 @@ class frontController extends Controller
         $remember_me = $request->has('remember_me') ? true : false;
         if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
             // Authentication passed...
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         } else {
             return back()->with('danger', trans('lang.wrong_password'));
         }

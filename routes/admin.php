@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\CitiesController;
 use App\Http\Controllers\Admin\StatesController;
 use App\Http\Controllers\backupController;
 use \App\Http\Controllers\Admin\NotificationController;
+use \App\Http\Controllers\Admin\SliderController;
+use \App\Http\Controllers\Admin\AdsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,9 +48,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('Setting', [\App\Http\Controllers\Admin\AdminsController::class, 'Setting'])->name('profile');
     Route::post('UpdateProfile', [\App\Http\Controllers\Admin\AdminsController::class, 'UpdateProfile'])->name('UpdateProfile');
 
-    Route::get('/', function (){
-        return redirect('dashboard');
-    });
+
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
 
 
@@ -75,6 +75,30 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('/store', [AdminsController::class, 'store'])->name('.store');
         Route::get('/delete', [AdminsController::class, 'destroy'])->name('.delete');
         Route::post('/change_active', [AdminsController::class, 'changeActive'])->name('.change_active');
+
+    });
+    Route::group(['prefix' => 'sliders', 'as' => 'sliders'], function () {
+
+        Route::get('/', [SliderController::class, 'index'])->name('.index');
+        Route::get('/datatable', [SliderController::class, 'datatable'])->name('.datatable');
+        Route::get('/add-button', [SliderController::class, 'table_buttons'])->name('.add-button');
+        Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('.edit');
+        Route::post('/update/{id}', [SliderController::class, 'update'])->name('.update');
+        Route::post('/store', [SliderController::class, 'store'])->name('.store');
+        Route::get('/delete', [SliderController::class, 'destroy'])->name('.delete');
+        Route::post('/change_active', [SliderController::class, 'changeActive'])->name('.change_active');
+
+    });
+    Route::group(['prefix' => 'ads', 'as' => 'ads'], function () {
+
+        Route::get('/', [AdsController::class, 'index'])->name('.index');
+        Route::get('/datatable', [AdsController::class, 'datatable'])->name('.datatable');
+        Route::get('/add-button', [AdsController::class, 'table_buttons'])->name('.add-button');
+        Route::get('/edit/{id}', [AdsController::class, 'edit'])->name('.edit');
+        Route::post('/update/{id}', [AdsController::class, 'update'])->name('.update');
+        Route::post('/store', [AdsController::class, 'store'])->name('.store');
+        Route::get('/delete', [AdsController::class, 'destroy'])->name('.delete');
+        Route::post('/change_active', [AdsController::class, 'changeActive'])->name('.change_active');
 
     });
     Route::group(['prefix' => 'categories', 'as' => 'categories'], function () {

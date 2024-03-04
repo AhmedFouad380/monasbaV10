@@ -7,15 +7,15 @@
 
     <!--end::Filter-->
     <!--begin::Add user-->
-{{--    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"--}}
-{{--            data-bs-target="#kt_modal_add_user">--}}
-{{--        <i class="bi bi-plus-circle-fill fs-2x"></i>--}}
-{{--    </button>--}}
+    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
+            data-bs-target="#kt_modal_add_user">
+        <i class="bi bi-plus-circle-fill fs-2x"></i>
+    </button>
 
     <!--end::Add user-->
-{{--    <button id="delete" class="btn btn-light-danger me-3 font-weight-bolder">--}}
-{{--        <i class="bi bi-trash-fill fs-2x"></i>--}}
-{{--    </button>--}}
+    <button id="delete" class="btn btn-light-danger me-3 font-weight-bolder">
+        <i class="bi bi-trash-fill fs-2x"></i>
+    </button>
 
     <!--begin::Modal - Add task-->
     <div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">

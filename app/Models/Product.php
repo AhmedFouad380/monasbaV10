@@ -110,5 +110,7 @@ class Product extends Model
         return $this->HasMany(ProductImages::class,'product_id');
     }
 
-
+    public function Rates(){
+        return $this->HasMany(Rate::class,'product_id');
+    }
 }

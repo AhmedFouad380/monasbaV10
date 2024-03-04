@@ -3,26 +3,69 @@
           integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 @endpush
-<!--begin::Input group-->
-<div class="fv-row mb-7">
-    <!--begin::Label-->
-    <label class="required fw-bold fs-6 mb-2">{{__('lang.name_ar')}}</label>
-    <!--end::Label-->
-    <!--begin::Input-->
-    <input type="text" name="name_ar"
-           class="form-control form-control-solid mb-3 mb-lg-0"
-           placeholder="" value="{{old('name_ar',$data->name_ar ?? '')}}" required/>
-    <!--end::Input-->
-</div>
+
 <!--end::Input group-->  <!--begin::Input group-->
 <div class="fv-row mb-7">
     <!--begin::Label-->
-    <label class="required fw-bold fs-6 mb-2">{{__('lang.name_en')}}</label>
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.title_ar')}}</label>
     <!--end::Label-->
     <!--begin::Input-->
-    <input type="text" name="name_en"
+    <input type="text" name="title_ar"
            class="form-control form-control-solid mb-3 mb-lg-0"
-           placeholder="" value="{{old('name_en',$data->name_en ?? '')}}" required/>
+           placeholder="" value="{{old('title_ar',$data->title_ar ?? '')}}" required/>
+    <!--end::Input-->
+</div>
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.title_en')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input type="text" name="title_en"
+           class="form-control form-control-solid mb-3 mb-lg-0"
+           placeholder="" value="{{old('title_en',$data->title_en ?? '')}}" required/>
+    <!--end::Input-->
+</div>
+
+<!--begin::Input group-->
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="fw-bold fs-6 mb-2">{{__('lang.description_ar')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <textarea type="text" name="description_ar"
+              class="form-control form-control-solid mb-3 mb-lg-0"
+              placeholder="" >{{old('description_ar',$data->description_ar ?? '')}}</textarea>
+    <!--end::Input-->
+</div>
+
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="fw-bold fs-6 mb-2">{{__('lang.description_en')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <textarea type="text" name="description_en"
+              class="form-control form-control-solid mb-3 mb-lg-0"
+              placeholder="">{{old('description_en',$data->description_en ?? '')}}</textarea>
+    <!--end::Input-->
+</div>
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.button_ar')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input type="text" name="button_ar"
+           class="form-control form-control-solid mb-3 mb-lg-0"
+           placeholder="" value="{{old('button_ar',$data->button_ar ?? '')}}" required/>
+    <!--end::Input-->
+</div>
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.button_en')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input type="text" name="button_en"
+           class="form-control form-control-solid mb-3 mb-lg-0"
+           placeholder="" value="{{old('button_en',$data->button_en ?? '')}}" required/>
     <!--end::Input-->
 </div>
 <div class="fv-row mb-7">
