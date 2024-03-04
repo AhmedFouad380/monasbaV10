@@ -34,7 +34,7 @@
 
         @inject('countries','App\Models\Country')
         @foreach($countries->all() as $country)
-            <option value="{{$country->id}}">{{$country->name}}</option>
+            <option @if(isset($data) && $data->country_id == $country->id) selected @endif value="{{$country->id}}">{{$country->name}}</option>
         @endforeach
 
     </select>
