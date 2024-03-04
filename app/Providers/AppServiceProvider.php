@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
         if (!session()->has('lang')) {
             session()->put('lang', 'ar');
-
+        }
             if(!session()->get('country')){
             if ($position = Location::get(request()->ip())) {
                 $data = Country::where('name_en','like','%'.$position->countryName.'%')->first();
