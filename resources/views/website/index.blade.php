@@ -179,7 +179,7 @@
 
                             <div class="shop row gutter-30">
 
-                                    @foreach(\App\Models\Product::where('country_id',session()->get('country'))->where('status','active')->where('type','rent')->limit(8)->get() as $pro)
+                                    @foreach(\App\Models\Product::where('country_id',session()->get('country'))->where('status','active')->OrderBy('id','desc')->where('type','rent')->limit(8)->get() as $pro)
                                     <div class="product col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="grid-inner">
                                             <div class="product-image">
@@ -216,7 +216,7 @@
                             <div class="shop row gutter-30">
 
 
-                                @foreach(\App\Models\Product::where('country_id',session()->get('country'))->where('status','active')->where('type','sale')->limit(8)->get() as $pro)
+                                @foreach(\App\Models\Product::where('country_id',session()->get('country'))->where('status','active')->OrderBy('id','desc')->where('type','sale')->limit(8)->get() as $pro)
                                     <div class="product col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="grid-inner">
                                             <div class="product-image">
