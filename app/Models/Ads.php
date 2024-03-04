@@ -29,5 +29,7 @@ class Ads extends Model
             $image->storeAs('uploads/ads/',$img_name,'s3');
 //            $image->move(public_path('/uploads/admin/'), $img_name);
             $this->attributes['image'] = $img_name;
+        }else{
+            $this->attributes['image'] = $image;
         }
     }}

@@ -20,6 +20,7 @@ use App\Http\Controllers\backupController;
 use \App\Http\Controllers\Admin\NotificationController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\AdsController;
+use App\Http\Controllers\Admin\SubscribeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +78,14 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('/change_active', [AdminsController::class, 'changeActive'])->name('.change_active');
 
     });
+
+    Route::group(['prefix' => 'subscribes', 'as' => 'subscribes'], function () {
+        Route::get('/', [SubscribeController::class, 'index'])->name('.index');
+        Route::get('/datatable', [SubscribeController::class, 'datatable'])->name('.datatable');
+        Route::get('/add-button', [SubscribeController::class, 'table_buttons'])->name('.add-button');
+        Route::get('/delete', [SubscribeController::class, 'destroy'])->name('.delete');
+    });
+
     Route::group(['prefix' => 'sliders', 'as' => 'sliders'], function () {
 
         Route::get('/', [SliderController::class, 'index'])->name('.index');

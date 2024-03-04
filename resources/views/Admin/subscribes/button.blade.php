@@ -7,12 +7,12 @@
 
     <!--end::Filter-->
     <!--begin::Add user-->
-    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
-            data-bs-target="#kt_modal_add_user">
-        <i class="bi bi-plus-circle-fill fs-2x"></i>
-    </button>
+{{--    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"--}}
+{{--            data-bs-target="#kt_modal_add_user">--}}
+{{--        <i class="bi bi-plus-circle-fill fs-2x"></i>--}}
+{{--    </button>--}}
 
-    <!--end::Add user-->
+<!--end::Add user-->
     <button id="delete" class="btn btn-light-danger me-3 font-weight-bolder">
         <i class="bi bi-trash-fill fs-2x"></i>
     </button>
@@ -48,36 +48,7 @@
                 <!--end::Modal header-->
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                    <!--begin::Form-->
-                    <form id="kt_account_profile_details_form" class="form" method="post" action="{{url($route.'/store')}}"
-                          enctype="multipart/form-data">
-                    @csrf
-                    <!--begin::Scroll-->
-                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
-                             id="kt_modal_add_user_scroll" data-kt-scroll="true"
-                             data-kt-scroll-activate="{default: false, lg: true}"
-                             data-kt-scroll-max-height="auto"
-                             data-kt-scroll-dependencies="#kt_modal_add_user_header"
-                             data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
-                             data-kt-scroll-offset="300px">
-                        @include('Admin.'.$route.'.form')
-                        <!--end::Actions-->
-                        </div>
-                        <!--end::Scroll-->
-                        <!--begin::Actions-->
-                        <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-light me-3"
-                                    data-bs-dismiss="modal">{{__('lang.close')}}
-                            </button>
-                            <button type="submit" class="btn btn-primary"
-                                    data-kt-users-modal-action="submit">
-                                <span class="indicator-label">{{__('lang.save')}}</span>
-                                <span class="indicator-progress">{{__('lang.please_wait')}}
-                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
-                        </div>
-                    </form>
-                    <!--end::Form-->
+
                 </div>
                 <!--end::Modal body-->
             </div>
@@ -91,13 +62,13 @@
 <!--end::Page Custom Javascript-->
 <script type="text/javascript">
     $('.dropify').dropify({
-            messages: {
-                'default': "{{trans('lang.dropify-default')}}",
-                'replace': "{{trans('lang.dropify-replace')}}",
-                'remove':  "{{trans('lang.dropify-remove')}}",
-                'error':   "{{trans('lang.dropify-error')}}"
-            }
-        });
+        messages: {
+            'default': "{{trans('lang.dropify-default')}}",
+            'replace': "{{trans('lang.dropify-replace')}}",
+            'remove':  "{{trans('lang.dropify-remove')}}",
+            'error':   "{{trans('lang.dropify-error')}}"
+        }
+    });
 </script>
 <script type="text/javascript">
 

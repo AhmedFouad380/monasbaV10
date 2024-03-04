@@ -218,7 +218,7 @@ License: For each use you must have a valid license purchased only from above li
                             <li class="nav-item mb-2 togge" data-bs-toggle="tooltip" data-bs-trigger="hover"
                                 data-bs-placement="right" data-bs-dismiss="click" title="{{trans('lang.basic_menus')}}">
                                 <!--begin::Nav link-->
-                                <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light  @if(request()->segment(1) == '/categories' || request()->segment(1) == 'currencies' || request()->segment(1) == 'pages' || request()->segment(1) == 'news' || request()->segment(1) == 'contacts' || request()->segment(1) == 'subscribes' ||  request()->segment(1) == 'features' || request()->segment(1) == 'logs'  || request()->segment(1) == 'promotioncodes' ) active @endif  "
+                                <a class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light  @if(request()->segment(1) == '/categories' || request()->segment(1) == 'currencies' || request()->segment(1) == 'pages' || request()->segment(1) == 'news' || request()->segment(1) == 'sliders' || request()->segment(1) == 'ads' || request()->segment(1) == 'contacts' || request()->segment(1) == 'subscribes' ||  request()->segment(1) == 'features' || request()->segment(1) == 'logs'  || request()->segment(1) == 'promotioncodes' ) active @endif  "
                                    data-bs-toggle="tab" href="#kt_aside_nav_tab_menu">
                                     <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                                     <span class="svg-icon svg-icon-2x">

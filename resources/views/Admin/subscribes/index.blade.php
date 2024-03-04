@@ -5,7 +5,7 @@
 @section('title',__('lang.subscribes'))
 @section('header')
     <!--begin::Heading-->
-    <h1 class="text-dark fw-bolder my-0 fs-2">{{trans('lang.'.$route)}} </h1>
+    <h1 class="text-dark fw-bolder my-0 fs-2">{{__('lang.subscribes')}} </h1>
     <!--end::Heading-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb fw-bold fs-base my-1">
@@ -14,7 +14,7 @@
                 {{trans('lang.Dashboard')}} </a>
         </li>
         <li class="breadcrumb-item">
-            {{trans('lang.'.$route)}}
+            {{__('lang.subscribes')}}
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -30,23 +30,19 @@
                 <div class="card-body pt-0">
 
                     <!--begin::Table-->
-                    <table class="table align-middle table-row-dashed fs-4 gy-5" id="users_table">
+                    <table class="table  align-middle table-row-bordered  text-center fs-4 gy-5" id="users_table">
                         <!--begin::Table head-->
                         <thead>
                         <!--begin::Table row-->
 
-                        <tr class="text-start text-muted fw-bolder fs-5 text-uppercase gs-0">
+                        <tr class="bg-secondary text-dark  fw-bolder fs-5 text-capitalize gs-0">
                             <th class="w-10px pe-2">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                     <input class="form-check-input" type="checkbox" data-kt-check="true"
                                            data-kt-check-target="#users_table .checkbox" value="1"/>
                                 </div>
                             </th>
-
-                            <th class="min-w-125px">{{__('lang.hosts')}}</th>
-                            <th class="min-w-125px">{{__('lang.features')}}</th>
-                            <th class="min-w-125px">{{__('lang.Users_active')}}</th>
-                            <th class="min-w-125px">{{__('lang.Actions')}}</th>
+                            <th class="min-w-125px">{{__('lang.email')}}</th>
                         </tr>
                         <!--end::Table row-->
                         </thead>
@@ -64,7 +60,6 @@
         </div>
         <!--end::Post-->
     </div>
-
 @endsection
 
 @section('script')
@@ -109,7 +104,7 @@
                                 '                        <tbody> ' +
                                 '                                <tr>' +
                                 '                                    <td style="text-align: right"> <img src="{{asset('logo.png')}}" width="150px" height="150px" /> </td>' +
-                                '                                    <td style="text-align: right"><p>{{__("lang.title")}} : {{__('lang.'.$route)}}</p>' +
+                                '                                    <td style="text-align: right"><p>{{__("lang.title")}} : {{__('lang.contact_us')}}</p>' +
                                 '                                                                  <p>{{__('lang.date')}} : {{ Carbon\Carbon::now()->translatedFormat('l Y/m/d') }}</p>' +
                                 '                                                                  <p>{{__('lang.time')}} : {{ Carbon\Carbon::now()->translatedFormat('h:i a') }}</p></td>' +
                                 '                                </tr> ' +
@@ -143,19 +138,16 @@
                     // {extend: 'colvis', className: 'btn secondary', text: 'إظهار / إخفاء الأعمدة '}
                 ],
                 ajax: {
-                    url: '{{ route($route.'.datatable') }}',
+                    url: '{{ route('subscribes.datatable') }}',
                     data: {}
                 },
                 columns: [
                     {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
-                    {data: 'host', name: 'host', "searchable": true, "orderable": true},
-                    {data: 'feature', name: 'feature', "searchable": true, "orderable": true},
-                    {data: 'status', name: 'status', "searchable": true, "orderable": true},
-                    {data: 'actions', name: 'actions', "searchable": false, "orderable": false},
+                    {data: 'email', name: 'email', "searchable": true, "orderable": true},
                 ]
             });
             $.ajax({
-                url: "{{ URL::to($route.'/add-button')}}",
+                url: "{{ URL::to('subscribes/add-button')}}",
                 success: function (data) {
                     $('.add_button').append(data);
                 },
@@ -164,6 +156,4 @@
         });
     </script>
 
-
 @endsection
-
