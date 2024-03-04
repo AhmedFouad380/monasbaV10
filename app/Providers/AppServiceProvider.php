@@ -42,7 +42,8 @@ class AppServiceProvider extends ServiceProvider
 
         if (!session()->has('lang')) {
             session()->put('lang', 'ar');
-        }
+
+            if(!session()->get('country')){
             if ($position = Location::get(request()->ip())) {
                 $data = Country::where('name_en','like','%'.$position->countryName.'%')->first();
 
@@ -56,9 +57,10 @@ class AppServiceProvider extends ServiceProvider
                     $country=  CountriesResource::make(Country::where('id',6)->first());
                     session()->put('country', $country->id);
                 }
-            }else{
-                $country=  CountriesResource::make(Country::where('id',6)->first());
+            }else {
+                $country = CountriesResource::make(Country::where('id', 6)->first());
                 session()->put('country', $country->id);
+            }
             }
     }
 }
