@@ -218,23 +218,27 @@ class AuthController extends Controller
 
         $token = rand(1000, 9999);
         $client = User::where('phone',$request->phone)->first();
-        DB::table('user_password_rest')->insert([
-            'country_code' => $request->country_code,
-            'phone' => $request->phone,
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
-        //TODO will make here send sms to client phone ...
+        if(isset($client)) {
+            DB::table('user_password_rest')->insert([
+                'country_code' => $request->country_code,
+                'phone' => $request->phone,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+            //TODO will make here send sms to client phone ...
 
-        //  Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
-        //     $message->to($request->email);
-        //   $message->subject('Reset Password');
-        //    });
-        $result['otp'] = (string)$token;
+            //  Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
+            //     $message->to($request->email);
+            //   $message->subject('Reset Password');
+            //    });
+            $result['otp'] = (string)$token;
 
-        Mail::to($client->email)->send(new VerifyPhone($result['otp']));
+            Mail::to($client->email)->send(new VerifyPhone($result['otp']));
 
-        return msgdata(true, trans('lang.email_sent'), $result, success());
+            return msgdata(true, trans('lang.email_sent'), $result, success());
+        }else{
+            return msg(false, trans('lang.client_not_found'), failed());
+        }
     }
     /**
      * Write code on Method
