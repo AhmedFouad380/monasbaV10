@@ -21,6 +21,7 @@ use \App\Http\Controllers\Admin\NotificationController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\AdsController;
 use App\Http\Controllers\Admin\SubscribeController;
+use \App\Http\Controllers\Admin\BlogsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -226,6 +227,18 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('/store', [ProductsController::class, 'store'])->name('.store');
         Route::get('/delete', [ProductsController::class, 'destroy'])->name('.delete');
         Route::post('/change_active', [ProductsController::class, 'changeActive'])->name('.change_active');
+
+    });
+    Route::group(['prefix' => 'blogs', 'as' => 'blogs'], function () {
+
+        Route::get('/', [BlogsController::class, 'index'])->name('.index');
+        Route::get('/datatable', [BlogsController::class, 'datatable'])->name('.datatable');
+        Route::get('/add-button', [BlogsController::class, 'table_buttons'])->name('.add-button');
+        Route::get('/edit/{id}', [BlogsController::class, 'edit'])->name('.edit');
+        Route::post('/update/{id}', [BlogsController::class, 'update'])->name('.update');
+        Route::post('/store', [BlogsController::class, 'store'])->name('.store');
+        Route::get('/delete', [BlogsController::class, 'destroy'])->name('.delete');
+        Route::post('/change_active', [BlogsController::class, 'changeActive'])->name('.change_active');
 
     });
 

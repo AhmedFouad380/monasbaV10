@@ -217,7 +217,7 @@ class AuthController extends Controller
         ]);
 
         $token = rand(1000, 9999);
-
+        $client = User::where('phone',$request->phone)->first();
         DB::table('user_password_rest')->insert([
             'country_code' => $request->country_code,
             'phone' => $request->phone,
@@ -231,7 +231,8 @@ class AuthController extends Controller
         //   $message->subject('Reset Password');
         //    });
         $result['otp'] = (string)$token;
-//        Mail::to($client->email)->send(new VerifyPhone($result['otp']));
+
+        Mail::to($client->email)->send(new VerifyPhone($result['otp']));
 
         return msgdata(true, trans('lang.email_sent'), $result, success());
     }

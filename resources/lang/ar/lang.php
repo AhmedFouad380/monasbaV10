@@ -791,6 +791,7 @@ return [
     'search by store name' => 'ابحث باسم التاجر',
     'search by product name' => 'ابحث  باسم  المنتج',
     'Blogs' => 'المقالات',
+    'blogs' => 'المقالات',
     'all you needs near to you' => 'كل ما تحتاجه بالقرب منك',
     'recomended Products' => 'منتجات مقترحه',
     'Select Type' => 'اختار النوع',

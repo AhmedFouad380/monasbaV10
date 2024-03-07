@@ -86,7 +86,8 @@
                                     }
                             @endphp
                             @if ($paginator->lastPage() > 1)
-                                <ul class="pagination">
+
+                                <ul class="pagination  mt-5 pagination-circle justify-content-center">
                                     <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }} page-item">
                                         <a class="page-link" href="{{ $paginator->url(1) }}">{{__('lang.first')}} </a>
                                     </li>

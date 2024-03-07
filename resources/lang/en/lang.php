@@ -777,6 +777,7 @@ return [
     'VipPages' => '  Pages',
     'Details' => 'Details',
     'Blogs' => 'Blogs',
+    'blogs' => 'Blogs',
     'all you needs near to you' => 'all you needs near to you',
     'recomended Products' => 'recomended Products',
     'Select Type' => 'Select Type',
