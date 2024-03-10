@@ -52,7 +52,7 @@
                         <!-- Entry Image
                         ============================================= -->
                         <div class="entry-image bottommargin">
-                            <a href="#"><img src=" {{$data->image}}" alt=" {{$data->title}}"></a>
+                            <a href="#"><img src="{{$data->image}}" alt=" {{$data->title}}"></a>
                         </div><!-- .entry-image end -->
 
                         <!-- Entry Content
