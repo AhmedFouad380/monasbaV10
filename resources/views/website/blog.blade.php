@@ -112,12 +112,12 @@
                             <div class="grid-inner row align-items-center gutter-20">
                                 <div class="col-4 col-xl-5">
                                     <div class="entry-image">
-                                        <a href="{{url('blog',$blog->id)}}"><img src="{{$blog->image}}" alt="{{$blog->title}}"></a>
+                                        <a href="{{url('Blog',$blog->id)}}"><img src="{{$blog->image}}" alt="{{$blog->title}}"></a>
                                     </div>
                                 </div>
                                 <div class="col-8 col-xl-7">
                                     <div class="entry-title title-xs nott">
-                                        <h3><a href="{{url('blog',$blog->id)}}">{{$blog->title}}</a></h3>
+                                        <h3><a href="{{url('Blog',$blog->id)}}">{{$blog->title}}</a></h3>
                                     </div>
                                     <div class="entry-meta">
                                         <ul>

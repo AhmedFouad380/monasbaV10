@@ -36,7 +36,7 @@
                                 <a href="{{$blog->image}}" data-lightbox="image"><img src="{{$blog->image}}" alt="{{$blog->title}}"></a>
                             </div>
                             <div class="entry-title">
-                                <h2><a href="{{url('blog',$blog->id)}}">{{$blog->title}}</a></h2>
+                                <h2><a href="{{url('Blog',$blog->id)}}">{{$blog->title}}</a></h2>
                             </div>
                             <div class="entry-meta">
                                 <ul>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="entry-content">
                                 <p>{{substr($blog->description,1,200)}}</p>
-                                <a href="{{url('blog',$blog->id)}}" class="more-link">{{__('lang.readMore')}}</a>
+                                <a href="{{url('Blog',$blog->id)}}" class="more-link">{{__('lang.readMore')}}</a>
                             </div>
                         </div>
                     </div>
