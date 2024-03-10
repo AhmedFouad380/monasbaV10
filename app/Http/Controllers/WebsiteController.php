@@ -22,7 +22,7 @@ class WebsiteController extends Controller
         $blogs = Blog::where('country_id',session()->get('country'))->OrderBy('id','desc')->paginate(10);
         return view('website.blogs',compact('blogs'));
     }
-    public function Bloh($id){
+    public function Blog($id){
         $data = Blog::findOrFail($id);
         return view('website.blog',compact('data'));
     }
