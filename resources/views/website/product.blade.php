@@ -101,6 +101,14 @@
                                 ============================================= -->
                                 <p>{!! $data->description !!}</p>
 
+                                <div >
+                                    <a href="https://apps.apple.com/us/app/%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9/id1589937521" target="_blank">
+                                        <img src="{{asset('website/images/app-storepng.png')}}" width="184px">
+                                    </a>
+                                    <a href="https://play.google.com/store/search?q=%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9&c=apps">
+                                        <img src="{{asset('website/images/googleplay.png')}}" width="160px">
+                                    </a>
+                                </div>
 
                                 <!-- Product Single - Share
                                 ============================================= -->
@@ -239,6 +247,7 @@
                                 <div class="product-desc center">
                                     <div class="product-title"><h3><a href="#">{{$pro->name}}</a></h3></div>
                                     <div class="product-price"> <ins>{{$pro->price}}</ins> {{$pro->Currency->name}}</div>
+
                                 </div>
                             </div>
                         </div>
