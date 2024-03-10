@@ -35,6 +35,8 @@ Route::get('test-env',function (){
     return env('PUSHER_APP_KEY');
 });
 Route::get('category/{id}', [WebsiteController::class, 'category']);
+Route::get('Blogs', [WebsiteController::class, 'Blogs']);
+Route::get('Blog/{id}', [WebsiteController::class, 'Blog']);
 Route::get('product/{id}', [WebsiteController::class, 'product']);
 Route::get('ajax/product/{id}', [WebsiteController::class, 'ajaxProduct']);
 Route::post('add-comment', [WebsiteController::class, 'addComment']);

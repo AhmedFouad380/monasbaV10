@@ -18,7 +18,7 @@ class ProductImages extends Model
             return Storage::disk('s3')->url('uploads/products2/' . $image);
 //            return asset('uploads/admin') . '/' . $image;
         }
-        return asset('defaults/user_default.png');
+        return asset('logo/logo.png');
     }
 
     public function setImageAttribute($image)

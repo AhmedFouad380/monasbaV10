@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
@@ -17,7 +18,14 @@ class WebsiteController extends Controller
         $data = Product::where('country_id',session()->get('country'))->OrderBy('id','desc')->where('sub_category_id',$id)->paginate(10);
         return view('website.categories',compact('data','category'));
     }
-
+    public function Blogs(){
+        $blogs = Blog::where('country_id',session()->get('country'))->OrderBy('id','desc')->paginate(10);
+        return view('website.blogs',compact('blogs'));
+    }
+    public function Bloh($id){
+        $data = Blog::findOrFail($id);
+        return view('website.blog',compact('data'));
+    }
     public function product($id){
         $data = Product::findOrFail($id);
         $related = Product::where('country_id',session()->get('country'))->where('sub_category_id',$data->sub_category_id)->InRandomOrder()->limit(6)->get();

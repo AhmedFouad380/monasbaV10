@@ -1046,6 +1046,6 @@ return [
     'Share'=>'Share',
     'Total Downloads'=>'Total Downloads',
     'Get App'=>'Get App',
-
+    'Our Latest News in Grid Layout'=>'Our Latest News in Grid Layout',
 
 ];

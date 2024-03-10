@@ -41,7 +41,7 @@ class Product extends Model
             if($image2 = ProductImages::where('product_id',$this->attributes['id'])->first()){
                 return $image2->image;
             }else{
-                return asset('defaults/user_default.png');
+                return asset('logo/logo.png');
             }
         }
     }
@@ -53,9 +53,10 @@ class Product extends Model
 //            $path = $img_name->storePublicly('images', 's3');
 //            $image->storePublicly('images/', $img_name, 's3');
             $image->storeAs('uploads/products2', $img_name, 's3');
-
 //            $image->move(public_path('/uploads/admin/'), $img_name);
             $this->attributes['image'] = $img_name;
+        }else{
+            $this->attributes['image'] = $image;
         }
     }
 

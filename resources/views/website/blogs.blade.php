@@ -29,41 +29,66 @@
                 <!-- Posts
                 ============================================= -->
                 <div id="posts" class="post-grid row grid-container gutter-30" data-layout="fitRows">
-
+                    @foreach($blogs as $blog)
                     <div class="entry col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="grid-inner">
                             <div class="entry-image">
-                                <a href="images/blog/full/17.jpg" data-lightbox="image"><img src="images/blog/grid/17.jpg" alt="Standard Post with Image"></a>
+                                <a href="{{$blog->image}}" data-lightbox="image"><img src="{{$blog->image}}" alt="{{$blog->title}}"></a>
                             </div>
                             <div class="entry-title">
-                                <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
+                                <h2><a href="{{url('blog',$blog->id)}}">{{$blog->title}}</a></h2>
                             </div>
                             <div class="entry-meta">
                                 <ul>
-                                    <li><i class="icon-calendar3"></i> 10th Feb 2021</li>
-                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+                                    <li><i class="icon-calendar3"></i> {{\Carbon\Carbon::parse($blog->created_at)->format('Y-m-d')}}</li>
+{{--                                    <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>--}}
                                     <li><a href="#"><i class="icon-camera-retro"></i></a></li>
                                 </ul>
                             </div>
                             <div class="entry-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                                <a href="blog-single.html" class="more-link">Read More</a>
+                                <p>{{substr($blog->description,1,200)}}</p>
+                                <a href="{{url('blog',$blog->id)}}" class="more-link">{{__('lang.readMore')}}</a>
                             </div>
                         </div>
                     </div>
-
+                    @endforeach
                 </div><!-- #posts end -->
 
                 <!-- Pagination
                 ============================================= -->
                 <ul class="pagination mt-5 pagination-circle justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#"><i class="icon-angle-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="icon-angle-right"></i></a></li>
+                    @php
+                        $paginator =$blogs->appends(request()->input())->links()->paginator;
+                            if ($paginator->currentPage() < 2 ){
+                                $link = $paginator->currentPage();
+                            }else{
+                                 $link = $paginator->currentPage() -1;
+                            }
+                            if($paginator->currentPage() == $paginator->lastPage()){
+                                       $last_links = $paginator->currentPage();
+                            }else{
+                                       $last_links = $paginator->currentPage() +1;
+
+                            }
+                    @endphp
+                    @if ($paginator->lastPage() > 1)
+
+                        <ul class="pagination  mt-5 pagination-circle justify-content-center">
+                            <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }} page-item">
+                                <a class="page-link" href="{{ $paginator->url(1) }}">{{__('lang.first')}} </a>
+                            </li>
+                            @for ($i = $link; $i <= $last_links; $i++)
+                                <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }} page-item">
+                                    <a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }} page-item">
+                                <a class="page-link"
+                                   href="{{ $paginator->url($paginator->lastPage()) }}">{{__('lang.Last')}}</a>
+                            </li>
+                        </ul>
+                    @endif
+
                 </ul>
 
             </div>
