@@ -105,7 +105,7 @@
                                     <a href="https://apps.apple.com/us/app/%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9/id1589937521" target="_blank">
                                         <img src="{{asset('website/images/app-storepng.png')}}" width="184px">
                                     </a>
-                                    <a href="https://play.google.com/store/search?q=%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9&c=apps">
+                                    <a href="https://play.google.com/store/search?q=%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9&c=apps" target="_blank">
                                         <img src="{{asset('website/images/googleplay.png')}}" width="160px">
                                     </a>
                                 </div>
