@@ -285,6 +285,7 @@
     </div>
 </div>
 
+<input type="text" name="image" >
 <div class="form-group row">
     <label class="col-xl-3 col-lg-3 col-form-label text-right">{{trans('lang.video')}}</label>
     <div class="col-lg-9 col-xl-12">

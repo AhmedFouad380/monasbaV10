@@ -38,7 +38,9 @@ class ProductRequest extends FormRequest
             'active_chat' => ['required', 'string', 'in:active,inactive'],
             'show_username' => ['required', 'string', 'in:active,inactive'],
             'active_video' => ['required', 'string', 'in:inactive,active'],
-            'image' => ['nullable', 'image', 'mimes:png,jpg,jpeg,svg'],
+            'image' => ['nullable'
+//                , 'image', 'mimes:png,jpg,jpeg,svg'
+            ],
             'category_id' => ['required', 'exists:categories,id'],
             'sub_category_id' => ['required', 'exists:sub_categories,id'],
             'city_id' => ['required', 'exists:cities,id'],
