@@ -2,7 +2,15 @@
 @section('title')
     {{$data->title}}
 @endsection
+@section('meta')
+    <meta property="og:title" content="{{$data->name}}" />
+    <meta property="og:description" content="{!! $data->description !!}" />
+    <meta property="og:url" content="{{url('Blog',$data->id)}}" />
+    <meta property="og:image" content="{{$data->image}}" />
+    <meta name="keywords" content="{{$data->meta_tags}}">
+    <meta name="description" content="{{$data->meta_descrition}}">
 
+@endsection
 @section('content')
     <!-- Page Title
 		============================================= -->
@@ -42,10 +50,6 @@
                         <div class="entry-meta">
                             <ul>
                                 <li><i class="icon-calendar3"></i> {{\Carbon\Carbon::parse($data->created_at)->format('Y-m-d')}}</li>
-{{--                                <li><a href="#"><i class="icon-user"></i> }}</a></li>--}}
-{{--                                <li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>--}}
-                                <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
-                                <li><a href="#"><i class="icon-camera-retro"></i></a></li>
                             </ul>
                         </div><!-- .entry-meta end -->
 
@@ -124,7 +128,7 @@
                                             <li><i class="icon-calendar3"></i> {{\Carbon\Carbon::parse($data->created_at)}}</li>
                                         </ul>
                                     </div>
-                                    <div class="entry-content d-none d-xl-block">{{substr($data->description,1,150)}}.</div>
+                                    <div class="entry-content d-none d-xl-block">{!! substr($data->description,1,150) !!}.</div>
                                 </div>
                             </div>
                         </div>

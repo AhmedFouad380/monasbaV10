@@ -43,6 +43,7 @@
                                 </div>
                             </th>
 
+                            <th class="min-w-125px">pro id</th>
                             <th class="min-w-125px">{{__('lang.name_ar')}}</th>
                             <th class="min-w-125px">{{__('lang.name_en')}}</th>
                             <th class="min-w-125px">{{__('lang.Users_active')}}</th>
@@ -179,6 +180,7 @@
             columns: [
                 {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
 
+                {data: 'proid', name: 'proid', "searchable": true, "orderable": true},
                 {data: 'name_ar', name: 'name_ar', "searchable": true, "orderable": true},
                 {data: 'name_en', name: 'name_en', "searchable": true, "orderable": true},
                 {data: 'status', name: 'status', "searchable": true, "orderable": true},
