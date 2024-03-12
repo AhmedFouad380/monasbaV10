@@ -23,7 +23,7 @@ class ProductsResource extends JsonResource
             'image'=>$this->image,
             'images'=>$this->images,
             'video'=>$this->video,
-            'description'=>$this->description,
+            'description'=>(string)$this->description,
             'type'=>$this->type,
             'active_video'=>$this->active_video,
             'user'=>UserResource::make($this->User),
