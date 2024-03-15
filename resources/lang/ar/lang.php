@@ -1050,5 +1050,6 @@ return [
     'Total Downloads'=>'عدد التحميلات',
     'Get App'=>'تحميل التطبيق',
     'Our Latest News in Grid Layout'=>'اخر الاخبار لدينا',
+    'min_price_show'=>'الحد الادنى للسعر لاظهار المنتج'
 
 ];

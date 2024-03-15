@@ -23,6 +23,16 @@
            placeholder="" value="{{old('name_en',$data->name_en ?? '')}}" required/>
     <!--end::Input-->
 </div>
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.min_price_show')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input type="number" name="min_price_show"
+           class="form-control form-control-solid mb-3 mb-lg-0"
+           placeholder="" value="{{old('min_price_show',$data->min_price_show ?? '')}}" required/>
+    <!--end::Input-->
+</div>
 
 <div class="fv-row mb-7">
     <div

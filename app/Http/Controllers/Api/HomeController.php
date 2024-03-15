@@ -171,7 +171,8 @@ class HomeController extends Controller
             });
         }
         if(isset($request->category_id) &&  $request->category_id != 0 ){
-            $result->where('category_id',$request->category_id);
+            $cat = Category::find($request->category_id);
+            $result->where('category_id',$request->category_id)->where('price','>',$cat->min_price_show);
         }
         if(isset($request->type) &&  $request->type != 0 ){
             $result->where('type',$request->type);
@@ -191,7 +192,7 @@ class HomeController extends Controller
         if(isset($request->user_id)){
             $result->where('user_id',$request->user_id);
         }
-        $data = ProductsResource::collection($result->paginate(20))->response()->getData(true);;
+        $data = ProductsResource::collection($result->paginate(20))->response()->getData(true);
         return msgdata(true, trans('lang.data_display_success'), $data, success());
     }
 

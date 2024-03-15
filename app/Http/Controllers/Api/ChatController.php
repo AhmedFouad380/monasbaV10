@@ -31,7 +31,7 @@ class ChatController extends Controller
         })->
         whereHas('User',function ($q){
             $q->where('deleted_at',null);
-        });
+        })->whereHas('lastMessage');
 
         $data = ChatResource::collection($result->paginate(10))->response()->getData(true);
 

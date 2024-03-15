@@ -28,6 +28,7 @@ class CategoryRequest extends FormRequest
             'name_ar' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'status' => 'required',
+            'min_price_show' => 'required',
             'image' => ['nullable', 'image', 'mimes:png,jpg,jpeg,svg'],
         ];
     }
