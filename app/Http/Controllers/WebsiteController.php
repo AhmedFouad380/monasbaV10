@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\sendEmail;
 use App\Mail\sendNotification;
 use App\Models\Blog;
 use App\Models\Category;
@@ -92,11 +93,14 @@ class WebsiteController extends Controller
     }
 
     public function send_mail_to_users(){
-        Mail::to('asd09505@gmail.com')->send(new sendNotification());
-//
+
+        dispatch(new sendEmail('asd09505@gmail.com'));
+
+//        Mail::to('')->send(new sendNotification());
+////
 //        $data = User::all();
 //        foreach($data as $user){
-//            Mail::to($user->email)->send(new sendNotification($data));
+//            dispatch(new SendEmailJob($user->email));
 //        }
         echo 'success';
     }
