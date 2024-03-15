@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\sendNotification;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Comment;
@@ -9,7 +10,9 @@ use App\Models\Contact;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Subscribe;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WebsiteController extends Controller
 {
@@ -86,5 +89,15 @@ class WebsiteController extends Controller
     public function changeCountry(Request $request){
         session()->put('country',$request->id);
         return 1;
+    }
+
+    public function send_mail_to_users(){
+        Mail::to('asd09505@gmail.com')->send(new sendNotification());
+//
+//        $data = User::all();
+//        foreach($data as $user){
+//            Mail::to($user->email)->send(new sendNotification($data));
+//        }
+        echo 'success';
     }
 }
