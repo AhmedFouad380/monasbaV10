@@ -94,14 +94,14 @@ class WebsiteController extends Controller
 
     public function send_mail_to_users(){
 
-        dispatch(new sendEmail('asd09505@gmail.com'));
-
+//        dispatch(new sendEmail('asd09505@gmail.com'));
+//
 //        Mail::to('')->send(new sendNotification());
 ////
-//        $data = User::all();
-//        foreach($data as $user){
-//            dispatch(new SendEmailJob($user->email));
-//        }
+        $data = User::all();
+        foreach($data as $user){
+            dispatch(new sendEmail($user->email));
+        }
         echo 'success';
     }
 }
