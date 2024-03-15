@@ -236,6 +236,7 @@ return [
     'Region' => 'المنطقة ',
     'Branches' => 'الفروع ',
     'UserName' => 'اسم العميل  ',
+    'Username' => 'اسم المستخدم  ',
     'view' => 'عرض',
     'Details' => 'التفاصيل',
 

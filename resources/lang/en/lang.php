@@ -1047,6 +1047,7 @@ return [
     'Total Downloads'=>'Total Downloads',
     'Get App'=>'Get App',
     'Our Latest News in Grid Layout'=>'Our Latest News in Grid Layout',
-    'min_price_show'=>'Minimum price to display the product'
+    'min_price_show'=>'Minimum price to display the product',
+    'Username' => 'User name',
 
 ];
