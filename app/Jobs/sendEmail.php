@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\sendNotification;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,14 +16,14 @@ class sendEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email;
+    protected $user;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($email)
+    public function __construct($user)
     {
-        $this->email = $email;
+        $this->user = $user;
     }
 
     /**
@@ -30,8 +31,8 @@ class sendEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        $email = $this->email;
-        Mail::to($email)->send(new sendNotification());
-
+        $user = $this->user;
+        Mail::to($user->email)->send(new sendNotification());
+        User::where('id',$user->id)->update(['is_mail_send'=>1]);
     }
 }

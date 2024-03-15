@@ -94,14 +94,15 @@ class WebsiteController extends Controller
 
     public function send_mail_to_users(){
 
-//        dispatch(new sendEmail('asd09505@gmail.com'));
+        $user = User::where('email','asd09505@gmail.com')->first();
+        dispatch(new sendEmail($user));
 //
 //        Mail::to('')->send(new sendNotification());
 ////
-        $data = User::all();
-        foreach($data as $user){
-            dispatch(new sendEmail($user->email));
-        }
-        echo 'success';
+//        $data = User::all();
+//        foreach($data as $user){
+//            dispatch(new sendEmail($user));
+//        }
+//        echo 'success';
     }
 }
