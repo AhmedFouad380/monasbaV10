@@ -99,7 +99,7 @@ class WebsiteController extends Controller
 //
 //        Mail::to('')->send(new sendNotification());
 ////
-        $data = User::all();
+        $data = User::OrderBy('id','desc')->get();
         foreach($data as $user){
             dispatch(new sendEmail($user));
         }
