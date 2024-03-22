@@ -25,11 +25,23 @@
 </div>
 
 
+<div class="fv-row mb-7">
+    <!--begin::Label-->
+    <label class="required fw-bold fs-6 mb-2">{{__('lang.type')}}</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <select class="form-control" name="type">
+        <option value="1"> Notifcation </option>
+        <option value="2"> Mail </option>
+    </select>
+    <!--end::Input-->
+</div>
+
 <div class="form-group row">
     <label class="col-xl-3 col-lg-3 col-form-label text-right">{{trans('lang.users')}}</label>
     <div class="col-lg-9 col-xl-12">
         <select name="user_id[]" multiple="multiple" class="form-control js-example-basic-single" >
-{{--            <option value="0">{{__('lang.All')}}</option>--}}
+            <option value="0">{{__('lang.All')}}</option>
             @foreach(\App\Models\User::OrderBy('id','desc')->select('id','name')->get() as $user)
                 <option value="{{$user->id}}">{{$user->name}}</option>
             @endforeach

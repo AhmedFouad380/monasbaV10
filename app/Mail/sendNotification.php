@@ -28,7 +28,6 @@ class sendNotification extends Mailable
     public function build()
     {
         return $this->markdown('email.sendNotification');
-
 //        return $this->subject('Verify Email')
 //            ->view('email.verify_email')->with('data', $this->data);;
     }

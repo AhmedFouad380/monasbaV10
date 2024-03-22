@@ -83,11 +83,19 @@ class NotificationController extends Controller
         $data['type']='admin';
 //        $data['name_en']=$data['name_ar'];
         $token = [];
-        foreach ($users as $id){
-            $data['user_id'] = $id;
-            $user = User::find($id);
-          $this->objectName::create($data);
-          $token[]=$user->fcm_token;
+        if($request->type = 1){
+            if(is_array($users,0)){
+                $token = User::plunk('fcm_token');
+            }else{
+                    $token = User::whereIn('id',$users)->plunk('fcm_token');
+            }
+        }else{
+            if(is_array($users,0)){
+                $token = User::plunk('fcm_token');
+            }else{
+                $data['user_id'] = $id;
+                $token = User::whereIn('id',$users)->plunk('fcm_token');
+            }
         }
 
         send($token,'مناسبة ( اشعار من قبل الادارة )',$data['name_ar'],null,'admin');

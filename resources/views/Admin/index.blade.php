@@ -353,7 +353,10 @@
                                 {{\App\Models\User::where('country_id',$country->id)->whereMonth('created_at',$x)->whereYear('created_at',date('Y'))->count()}},
                                 @endfor                                    ] },
                         @endforeach
-
+                        { name: "الكل", data: [
+                                @for($x = 1;$x <= 12 ; $x++)
+                                {{\App\Models\User::whereMonth('created_at',$x)->whereYear('created_at',date('Y'))->count()}},
+                                @endfor                                    ] },
                     ],
                     chart: { fontFamily: "inherit", type: "area", height: 350, toolbar: { show: !1 } },
                     plotOptions: {},
