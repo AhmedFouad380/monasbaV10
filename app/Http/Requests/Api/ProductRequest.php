@@ -31,7 +31,7 @@ class ProductRequest extends FormRequest
             'name_ar'=>'required',
             'name_en'=>'required',
             'type'=>'required|in:sale,rent',
-            'price'=>'required|integer|max:1000000',
+            'price'=>'required|max:1000000',
             'description_ar'=>'required',
             'description_en'=>'required',
             'active_call'=>'required',
