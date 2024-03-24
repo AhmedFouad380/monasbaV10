@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Http\Requests\Admin\NotificationRequest;
+use App\Jobs\sendEmail;
+use App\Mail\sendUserNotifcation;
 use App\Models\Category;
 use App\Models\Notification;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use function Monolog\Formatter\format;
 
 class NotificationController extends Controller
 {
@@ -86,19 +89,27 @@ class NotificationController extends Controller
         if($request->type = 1){
             if(is_array($users,0)){
                 $token = User::plunk('fcm_token');
+                send($token,'مناسبة ( اشعار من قبل الادارة )',$data['name_ar'],null,'admin');
+
             }else{
                     $token = User::whereIn('id',$users)->plunk('fcm_token');
+                send($token,'مناسبة ( اشعار من قبل الادارة )',$data['name_ar'],null,'admin');
+
             }
         }else{
             if(is_array($users,0)){
-                $token = User::plunk('fcm_token');
+                $usersa = User::OrderBy('id','desc')->get();
+                foreach($usersa as $user){
+                dispatch(new sendUserNotifcation($user));
+                }
             }else{
-                $data['user_id'] = $id;
-                $token = User::whereIn('id',$users)->plunk('fcm_token');
+                $users = User::whereIn('id',$users)->get();
+                foreach($users as $user){
+                    dispatch(new sendUserNotifcation($user));
+                }
             }
         }
 
-        send($token,'مناسبة ( اشعار من قبل الادارة )',$data['name_ar'],null,'admin');
 //        createLog($result, 1, $this->route, "#", $result->ar_name);
         return redirect(route($this->route . '.index'))->with('message', trans('lang.added_s'));
     }
