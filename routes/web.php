@@ -45,7 +45,7 @@ Route::post('store_contact', [WebsiteController::class, 'storeContact']);
 Route::get('change_country', [WebsiteController::class, 'changeCountry']);
 Route::get('store-subscribe', [WebsiteController::class, 'storeSubscribe']);
 Route::get('send_mail_to_users', [WebsiteController::class, 'send_mail_to_users']);
-
+Route::get('user/{id}', [WebsiteController::class, 'profile']);
 
 Route::get('/', function (){
     return view('website.index');

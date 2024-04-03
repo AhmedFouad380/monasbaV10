@@ -105,4 +105,11 @@ class WebsiteController extends Controller
         }
         echo 'success';
     }
+
+    public function profile($id){
+
+        $data = User::findOrFail($id);
+
+        return view('website.profile',compact('data'));
+    }
 }

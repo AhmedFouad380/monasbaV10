@@ -371,8 +371,8 @@ License: For each use you must have a valid license purchased only from above li
                         </div>
                         <!--end::Aside mobile toggle-->
                         <!--begin::Logo-->
-                        <a href="{{url('/')}}" class="d-flex align-items-center">
-                            <img alt="Logo" src="{{asset('logo.png')}}" class="h-30px"/>
+                        <a href="{{url('/dashboard')}}" class="d-flex align-items-center">
+                            <img alt="Logo" src="{{asset('logo/logo.png')}}" class="h-30px"/>
                         </a>
                         <!--end::Logo-->
                     </div>

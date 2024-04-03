@@ -288,6 +288,9 @@
                             @if(Request::get('state_id'))
                             'state_id': {{Request::get('state_id')}},
                         @endif
+                            @if(Request::get('is_active'))
+                        'is_active': {{Request::get('is_active')}},
+                        @endif
                     }
                 },
                 columns: [

@@ -38,6 +38,9 @@ class UsersController extends Controller
         if ($request->country_id) {
             $data = $data->where('country_id', $request->country_id);
         }
+        if ($request->is_active) {
+            $data = $data->where('is_active', $request->is_active);
+        }
         if ($request->state_id) {
             $data = $data->where('state_id', $request->state_id);
         }

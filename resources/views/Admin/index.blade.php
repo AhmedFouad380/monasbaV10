@@ -202,7 +202,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card card-xl-stretch-50 mb-5 mb-xl-8">
                         <!--begin::Body-->
                         <div class="card-body d-flex flex-column p-0">
@@ -225,6 +225,62 @@
                         <!--end::Body-->
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <!--begin::List Widget 4-->
+                    <div class="card card-xl-stretch mb-xl-8">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder text-dark">{{trans('lang.Online Users')}}</span>
+                                <span class="text-muted mt-1 fw-bold fs-7"></span>
+                            </h3>
+                            <div class="card-toolbar">
+                                <!--begin::Menu-->
+                                <div type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
+                                {{\App\Models\User::where('is_active',1)->count()}}
+
+                                <!--end::Svg Icon-->
+                                </div>
+                                <!--begin::Menu 3-->
+                                <!--end::Menu 3-->
+                                <!--end::Menu-->
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-5">
+                            <!--begin::Item-->
+                            @foreach(\App\Models\Country::where('status','active')->get() as $Country)
+                                <div class="d-flex align-items-sm-center mb-7">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-50px me-5">
+													<span class="symbol-label">
+														<img src="{{$Country->image}}" class="h-50 align-self-center" alt="{{$Country->name}}">
+													</span>
+                                    </div>
+                                    <!--end::Symbol-->
+                                    <!--begin::Section-->
+                                    <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                                        <div class="flex-grow-1 me-2">
+                                            <a href="{{url('users?is_active=1&country_id='.$Country->id)}}" class="text-gray-800 text-hover-primary fs-6 fw-bolder">{{$Country->name}}</a>
+                                            {{--                                                <span class="text-muted fw-bold d-block fs-7"></span>--}}
+                                        </div>
+                                        <span class="badge badge-light fw-bolder my-2">
+                                                {{\App\Models\User::where('country_id',$Country->id)->where('is_active',1)->count()}}</span>
+                                    </div>
+                                    <!--end::Section-->
+                                </div>
+                        @endforeach
+                        <!--end::Item-->
+
+                            <!--end::Item-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::List Widget 4-->
+                </div>
+
                 <div class="col-md-12">
                     <div class="card card-xl-stretch-50 mb-5 mb-xl-8">
                         <!--begin::Body-->
